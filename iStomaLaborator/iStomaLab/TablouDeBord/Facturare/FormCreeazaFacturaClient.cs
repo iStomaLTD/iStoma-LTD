@@ -435,7 +435,7 @@ namespace iStomaLab.TablouDeBord.Facturare
                 {
                     //este factura
                     rptImprimare += "RptFacturaClient.rpt";
-                    SetareParametriiRaport(rptImprimare);
+                    SetareParametriiRaport(rptImprimare); 
                 }
 
                 inchideEcranulOK();
