@@ -1,0 +1,12 @@
+﻿CREATE PROCEDURE [dbo].[Clienti_TD_GetListaCautare] 
+    @tDenumire nVarChar(100)
+AS
+BEGIN
+
+    SELECT nId, tDenumire FROM Clienti_TD
+	WHERE tDenumire LIKE @tDenumire collate Latin1_General_BIN2 AND dDataInchidere IS NULL 
+	ORDER BY tDenumire asc
+
+END
+
+GO

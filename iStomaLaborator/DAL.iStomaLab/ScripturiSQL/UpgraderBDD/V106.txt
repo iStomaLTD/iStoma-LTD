@@ -1,0 +1,240 @@
+﻿IF OBJECT_ID(N'DocumenteInline_TD', N'U') IS NULL
+BEGIN
+    CREATE TABLE [dbo].[DocumenteInline_TD](
+        [nId] [int] IDENTITY(1,1) NOT NULL,
+        [nTipObiect] [smallint] NULL,
+        [xnIdObiect] [int] NULL,
+        [nTipImagine] [tinyint] NULL,
+        [nImagine] [varbinary](max) NULL,
+        [dDataCreare] [datetime] NULL,
+        [xnUtilizatorCreare] [int] NULL,
+        [dDataInchidere] [datetime] NULL,
+        [xnUtilizatorInchidere] [int] NULL,
+        [tMotivInchidere] [nvarchar](500) NULL,
+        [tInformatiiComplementare] [nvarchar](max) NULL
+     CONSTRAINT [PK_DocumenteInline_TD] PRIMARY KEY CLUSTERED
+    (
+        [nId] ASC
+    )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 80) ON [PRIMARY]
+    ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+END
+
+
+-$$$-
+
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND OBJECT_ID = OBJECT_ID('spUtil_ReIndexDatabase_UpdateStats'))
+DROP PROCEDURE [dbo].spUtil_ReIndexDatabase_UpdateStats
+
+-$$$-
+
+CREATE PROCEDURE spUtil_ReIndexDatabase_UpdateStats
+AS
+DECLARE @MyTable VARCHAR(255)
+DECLARE myCursor
+CURSOR FOR
+SELECT '['+TABLE_SCHEMA+'].['+TABLE_NAME+']'
+FROM information_schema.tables
+WHERE table_type = 'base table'
+OPEN myCursor
+FETCH NEXT
+FROM myCursor INTO @MyTable
+WHILE @@FETCH_STATUS = 0
+BEGIN
+PRINT 'Reindexing Table:  ' + @MyTable
+DBCC DBREINDEX(@MyTable, '', 80)
+FETCH NEXT
+FROM myCursor INTO @MyTable
+END
+CLOSE myCursor
+DEALLOCATE myCursor
+EXEC sp_updatestats
+
+-$$$-
+
+INSERT INTO UtilizatorDrepturi_TP (nIdRubrica,nIdOptiune,xnIdUtilizator,dDataCreare,xnUtilizatorCreare) VALUES (1,1,1, getdate(), 1)
+INSERT INTO UtilizatorDrepturi_TP (nIdRubrica,nIdOptiune,xnIdUtilizator,dDataCreare,xnUtilizatorCreare) VALUES (1,7,1, getdate(), 1)
+INSERT INTO UtilizatorDrepturi_TP (nIdRubrica,nIdOptiune,xnIdUtilizator,dDataCreare,xnUtilizatorCreare) VALUES (1,9,1, getdate(), 1)
+INSERT INTO UtilizatorDrepturi_TP (nIdRubrica,nIdOptiune,xnIdUtilizator,dDataCreare,xnUtilizatorCreare) VALUES (2,2,1, getdate(), 1)
+INSERT INTO UtilizatorDrepturi_TP (nIdRubrica,nIdOptiune,xnIdUtilizator,dDataCreare,xnUtilizatorCreare) VALUES (3,3,1, getdate(), 1)
+INSERT INTO UtilizatorDrepturi_TP (nIdRubrica,nIdOptiune,xnIdUtilizator,dDataCreare,xnUtilizatorCreare) VALUES (3,4,1, getdate(), 1)
+INSERT INTO UtilizatorDrepturi_TP (nIdRubrica,nIdOptiune,xnIdUtilizator,dDataCreare,xnUtilizatorCreare) VALUES (3,5,1, getdate(), 1)
+INSERT INTO UtilizatorDrepturi_TP (nIdRubrica,nIdOptiune,xnIdUtilizator,dDataCreare,xnUtilizatorCreare) VALUES (3,6,1, getdate(), 1)
+INSERT INTO UtilizatorDrepturi_TP (nIdRubrica,nIdOptiune,xnIdUtilizator,dDataCreare,xnUtilizatorCreare) VALUES (3,8,1, getdate(), 1)
+INSERT INTO UtilizatorDrepturi_TP (nIdRubrica,nIdOptiune,xnIdUtilizator,dDataCreare,xnUtilizatorCreare) VALUES (3,13,1, getdate(), 1)
+INSERT INTO UtilizatorDrepturi_TP (nIdRubrica,nIdOptiune,xnIdUtilizator,dDataCreare,xnUtilizatorCreare) VALUES (4,10,1, getdate(), 1)
+INSERT INTO UtilizatorDrepturi_TP (nIdRubrica,nIdOptiune,xnIdUtilizator,dDataCreare,xnUtilizatorCreare) VALUES (4,11,1, getdate(), 1)
+INSERT INTO UtilizatorDrepturi_TP (nIdRubrica,nIdOptiune,xnIdUtilizator,dDataCreare,xnUtilizatorCreare) VALUES (4,12,1, getdate(), 1)
+INSERT INTO UtilizatorDrepturi_TP (nIdRubrica,nIdOptiune,xnIdUtilizator,dDataCreare,xnUtilizatorCreare) VALUES (5,14,1, getdate(), 1)
+INSERT INTO UtilizatorDrepturi_TP (nIdRubrica,nIdOptiune,xnIdUtilizator,dDataCreare,xnUtilizatorCreare) VALUES (5,15,1, getdate(), 1)
+INSERT INTO UtilizatorDrepturi_TP (nIdRubrica,nIdOptiune,xnIdUtilizator,dDataCreare,xnUtilizatorCreare) VALUES (5,16,1, getdate(), 1)
+INSERT INTO UtilizatorDrepturi_TP (nIdRubrica,nIdOptiune,xnIdUtilizator,dDataCreare,xnUtilizatorCreare) VALUES (6,17,1, getdate(), 1)
+INSERT INTO UtilizatorDrepturi_TP (nIdRubrica,nIdOptiune,xnIdUtilizator,dDataCreare,xnUtilizatorCreare) VALUES (6,18,1, getdate(), 1)
+INSERT INTO UtilizatorDrepturi_TP (nIdRubrica,nIdOptiune,xnIdUtilizator,dDataCreare,xnUtilizatorCreare) VALUES (6,19,1, getdate(), 1)
+INSERT INTO UtilizatorDrepturi_TP (nIdRubrica,nIdOptiune,xnIdUtilizator,dDataCreare,xnUtilizatorCreare) VALUES (6,20,1, getdate(), 1)
+
+-$$$-
+
+IF OBJECT_ID(N'UtilizatoriVenituri_TD', N'U') IS NULL
+BEGIN
+CREATE TABLE [dbo].[UtilizatoriVenituri_TD](
+    [nId] [int] IDENTITY(1,1) NOT NULL,
+    [dDataCreare] [datetime] NULL,
+    [xnUtilizatorCreare] [int] NULL,
+    [xnIdUtilizator] [int] NOT NULL,
+    [dDataInceput] [datetime] NOT NULL,
+    [dDataFinal] [datetime] NULL,
+    [dDataInchidere] [datetime] NULL,
+    [xnUtilizatorInchidere] [int] NULL,
+    [tMotivInchidere] [nvarchar](500) NULL,
+    [tObservatii] [nvarchar](500) NULL,
+    [nTipVenit] [tinyint] NULL,
+    [nSalariuFix] [decimal](7, 2) NULL,
+ CONSTRAINT [PK_UtilizatoriVenituri_TD] PRIMARY KEY CLUSTERED
+(
+    [nId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+
+-$$$-
+
+IF OBJECT_ID('UtilizatoriVenituri_TD_V', 'V') IS NOT NULL
+    DROP VIEW UtilizatoriVenituri_TD_V;
+
+-$$$-
+
+CREATE VIEW [dbo].[UtilizatoriVenituri_TD_V]
+AS
+SELECT        UV.nId, UV.dDataCreare, UV.xnUtilizatorCreare, UV.xnIdUtilizator, UV.dDataInceput, UV.dDataFinal, UV.dDataInchidere, UV.xnUtilizatorInchidere, UV.tMotivInchidere, UV.tObservatii, UV.nTipVenit, UV.nSalariuFix, U.tNume,
+                         U.tPrenume, U.tContStoma, U.nNumarOrdine
+FROM            dbo.UtilizatoriVenituri_TD AS UV INNER JOIN
+                         dbo.Utilizator_TD AS U ON UV.xnIdUtilizator = U.nId
+
+-$$$-
+
+IF OBJECT_ID(N'UtilizatoriVenituriDetalii_TD', N'U') IS NULL
+BEGIN
+CREATE TABLE [dbo].[UtilizatoriVenituriDetalii_TD](
+    [nId] [int] IDENTITY(1,1) NOT NULL,
+    [dDataCreare] [datetime] NULL,
+    [xnUtilizatorCreare] [int] NULL,
+    [xnIdUtilizatoriVenituri] [int] NOT NULL,
+    [xnIdEtapa] [int] NOT NULL,
+    [nPret] [decimal](6, 2) NULL,
+ CONSTRAINT [PK_UtilizatoriVenituriDetalii_TD] PRIMARY KEY CLUSTERED
+(
+    [nId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+
+-$$$-
+
+IF OBJECT_ID('UtilizatoriVenituriDetalii_TD_V', 'V') IS NOT NULL
+    DROP VIEW UtilizatoriVenituriDetalii_TD_V;
+
+-$$$-
+
+CREATE VIEW [dbo].[UtilizatoriVenituriDetalii_TD_V]
+AS
+SELECT        UVD.nId, UVD.dDataCreare, UVD.xnUtilizatorCreare, UVD.xnIdUtilizatoriVenituri, UVD.xnIdEtapa, UVD.nPret, UV.dDataInceput, UV.dDataFinal, UV.xnIdUtilizator, E.tDenumire
+FROM            dbo.UtilizatoriVenituriDetalii_TD AS UVD INNER JOIN
+                         dbo.UtilizatoriVenituri_TD AS UV ON UVD.xnIdUtilizatoriVenituri = UV.nId INNER JOIN
+                         dbo.Etape_TP AS E ON UVD.xnIdEtapa = E.nId
+
+-$$$-
+
+IF OBJECT_ID('UtilizatoriVenituriDetalii_TD_V', 'V') IS NOT NULL
+    DROP VIEW UtilizatoriVenituriDetalii_TD_V;
+
+-$$$-
+
+CREATE VIEW [dbo].[UtilizatoriVenituriDetalii_TD_V]
+AS
+SELECT        UVD.nId, UVD.dDataCreare, UVD.xnUtilizatorCreare, UVD.xnIdUtilizatoriVenituri, UVD.xnIdEtapa, UVD.nPret, UV.dDataInceput, UV.dDataFinal, UV.xnIdUtilizator, E.tDenumire, UV.dDataInchidere
+FROM            dbo.UtilizatoriVenituriDetalii_TD AS UVD INNER JOIN
+                         dbo.UtilizatoriVenituri_TD AS UV ON UVD.xnIdUtilizatoriVenituri = UV.nId INNER JOIN
+                         dbo.Etape_TP AS E ON UVD.xnIdEtapa = E.nId
+
+-$$$-
+
+
+IF OBJECT_ID('ClientiComenziEtape_TD_V', 'V') IS NOT NULL
+    DROP VIEW ClientiComenziEtape_TD_V;
+
+-$$$-
+
+CREATE VIEW [dbo].[ClientiComenziEtape_TD_V]
+AS
+SELECT        CCE.nId, CCE.xnIdComandaClient, CCE.xnIdEtapa, CCE.dDataInceput, CCE.dDataFinal, CCE.xnIdTehnician, CCE.tObservatii, CCE.dDataCreare, CCE.xnUtilizatorCreare, CCE.dDataInchidere, CCE.xnUtilizatorInchidere, 
+                         CCE.tMotivInchidere, CCE.bRefacere, dbo.Etape_TP.tDenumire, CCE.nStatus, CC.xnIdClient, CC.xnIdReprezentantClient, CC.tNumePacient, CC.tPrenumePacient, CC.tObservatii AS tObservatiiComanda, CC.xnIdCabinet, 
+                         CC.xnIdLucrare, CC.nNrElemente, CC.bUrgent, CC.tCuloareLucrare, dbo.Clienti_TD.tDenumire AS tDenumireClient, dbo.Utilizator_TD.tNume, dbo.Utilizator_TD.tPrenume, dbo.Utilizator_TD.tPorecla, 
+                         dbo.ListaPreturiStandard_TP.tDenumire AS tDenumireLucrare, dbo.ListaPreturiStandard_TP.tDenumirePrescurtata AS tDenumirePrescurtataLucrare, CC.dDataCreare AS dDataCreareLucrare, 
+                         CC.dDataLaGata AS dDataLaGataLucrare, CC.dDataPrimire AS dDataPrimireLucrare, CC.xnIdFactura, CC.nValoareInitiala, CC.nValoareFinala, CC.nMoneda, CC.nPretUnitarInitial, CC.nPretUnitarFinal, CC.tCodLucrare, 
+                         CC.dDataInchidere AS DataInchidereComanda
+FROM            dbo.ClientiComenziEtape_TD AS CCE INNER JOIN
+                         dbo.Etape_TP ON CCE.xnIdEtapa = dbo.Etape_TP.nId INNER JOIN
+                         dbo.ClientiComenzi_TD AS CC ON CCE.xnIdComandaClient = CC.nId INNER JOIN
+                         dbo.Clienti_TD ON CC.xnIdClient = dbo.Clienti_TD.nId INNER JOIN
+                         dbo.Utilizator_TD ON CCE.xnIdTehnician = dbo.Utilizator_TD.nId INNER JOIN
+                         dbo.ListaPreturiStandard_TP ON CC.xnIdLucrare = dbo.ListaPreturiStandard_TP.nId LEFT OUTER JOIN
+                         dbo.ClientiReprezentanti_TD ON CC.xnIdReprezentantClient = dbo.ClientiReprezentanti_TD.nId
+
+-$$$-
+
+
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND OBJECT_ID = OBJECT_ID('ClientiComenziEtape_TD_GetRezumatVenituri'))
+DROP PROCEDURE [dbo].[ClientiComenziEtape_TD_GetRezumatVenituri]
+
+-$$$-
+
+CREATE PROCEDURE ClientiComenziEtape_TD_GetRezumatVenituri @DataInceput datetime, @DataSfarsit datetime
+	
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+
+   SELECT cce.xnIdTehnician, SUM(ISNULL(cce.nNrElemente, 1)) AS NrElemente, SUM(ISNULL(cce.nNrElemente, 1) * isnull(uvd.nPret,0)) as TotalCuvenit 
+   FROM dbo.ClientiComenziEtape_TD_V AS cce INNER JOIN
+        dbo.UtilizatoriVenituriDetalii_TD_V AS uvd ON cce.xnIdEtapa = uvd.xnIdEtapa AND cce.xnIdTehnician = uvd.xnIdUtilizator 
+		AND cce.dDataInceput >= uvd.dDataInceput AND cce.dDataInceput <=  isnull( uvd.dDataFinal, getdate())
+		and uvd.dDataInchidere IS NULL
+	WHERE cce.dDataInchidere is null AND cce.DataInchidereComanda is null and cce.dDataInceput >= @DataInceput AND cce.dDataInceput <= @DataSfarsit
+  --WHERE cce.dDataInceput BETWEEN '2020-10-10' AND '2020-11-30'
+	GROUP BY cce.xnIdTehnician
+END
+
+-$$$-
+
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND OBJECT_ID = OBJECT_ID('ClientiComenziEtape_TD_GetDetaliatVenituri'))
+DROP PROCEDURE [dbo].[ClientiComenziEtape_TD_GetDetaliatVenituri]
+
+-$$$-
+
+CREATE PROCEDURE [dbo].[ClientiComenziEtape_TD_GetDetaliatVenituri] 
+@IdTehnician int,
+@DataInceput datetime,
+@DataSfarsit datetime
+	
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+
+   SELECT cce.xnIdTehnician, cce.dDataInceput, cce.tDenumireLucrare, isnull(cce.tNumePacient,'') as tNumePacient, isnull(cce.tPrenumePacient,'') as tPrenumePacient, cce.tDenumireClient,
+		  --isnull(cce.tNumePacient,'') + ' ' + isnull(cce.tPrenumePacient,'') AS DenumirePacient,  cce.tDenumireClient as DenumireClinica,
+		  cce.tDenumire, ISNULL(cce.nNrElemente, 1) AS nNrElemente, nValoareFinala, ISNULL(cce.nNrElemente, 1) * ISNULL(uvd.nPret, 0) AS Venit, cce.xnIdClient, cce.xnIdLucrare,  cce.xnIdEtapa , uvd.xnIdEtapa as xnIdEtapaVenit --cce.xnIdEtapa 
+   FROM  ClientiComenziEtape_TD_V AS cce INNER JOIN 
+		 UtilizatoriVenituriDetalii_TD_V AS uvd ON cce.xnIdEtapa = uvd.xnIdEtapa AND cce.xnIdTehnician = uvd.xnIdUtilizator 
+		 AND cce.dDataInceput >= uvd.dDataInceput AND cce.dDataInceput <= ISNULL(uvd.dDataFinal, GETDATE()) AND uvd.dDataInchidere IS NULL
+   WHERE  (cce.xnIdTehnician = @IdTehnician) AND (cce.dDataInchidere IS NULL) AND (cce.DataInchidereComanda IS NULL) AND (cce.dDataInceput >= @DataInceput) AND (cce.dDataInceput <= @DataSfarsit)
+   
+  
+END
+
+-$$$-
+
+
+
+

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Regiunile unei clase BLL standard</Title>
+      <Shortcut>RegiuniBLL</Shortcut>
+      <Description>
+        Code snippet pentru a genera regiunile standard ale unei clase BLL.
+      </Description>
+      <Author>Ionut</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>   
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>xNumeObiect</ID>
+          <ToolTip>Numele unei instante a acestei clase</ToolTip>
+          <Default>xNumeObiect</Default>
+        </Literal>
+        <Literal Editable="false">
+          <ID>NumeClasa</ID>
+          <Function>
+            ClassName()
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[		
+        #region Constructori
+
+        public $NumeClasa$(long lId, IDbTransaction xTrans)
+        {
+            FillObjectWithDataRow(GetDataRowForObjet(lId, xTrans), this);
+        }
+
+        public $NumeClasa$(System.Data.DataRow MyRow)
+        {
+            FillObjectWithDataRow(MyRow, this);
+        }
+
+        #endregion
+
+        #region Proprietati
+
+
+
+        #endregion
+
+        #region Metode de instanta
+
+        public override string ToString()
+        {		
+			return base.ToString();
+		}		
+		
+        #endregion
+
+        #region Metode de clasa
+		
+        private static void FillObjectWithDataRow(System.Data.DataRow TheDataRow, $NumeClasa$ $xNumeObiect$)
+        {
+            if (TheDataRow == null) throw new ArgumentNullException("TheDataRow");
+            if ($xNumeObiect$ == null) throw new ArgumentNullException("$xNumeObiect$");
+
+            $xNumeObiect$.MyDataRow = TheDataRow;
+        }
+
+        private static System.Data.DataRow GetDataRowForObjet(long lId, IDbTransaction trans)
+        {
+            if (lId == 0) throw new ArgumentException("lId");
+			using (DataSet ds)
+            {
+                ds = DALStoma.DUtilizator.GetUtilizatorById(lId, trans);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    return ds.Tables[0].Rows[0];
+                }
+                else
+                {
+                    throw new Exception("Nu exista");
+                }
+            }
+            return null;
+        }
+		
+        #endregion
+       ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

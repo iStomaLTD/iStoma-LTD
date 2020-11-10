@@ -1,0 +1,63 @@
+﻿IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND OBJECT_ID = OBJECT_ID('ClientiPlatiComenzi_TD_GetListaPlatiteByIdFactura'))
+DROP PROCEDURE [dbo].[ClientiPlatiComenzi_TD_GetListaPlatiteByIdFactura]
+
+-$$$-
+
+CREATE PROCEDURE [dbo].[ClientiPlatiComenzi_TD_GetListaPlatiteByIdFactura] 
+    @xnIdFactura int
+AS
+BEGIN
+
+    select * from ClientiPlatiComenzi_TD CPC
+	inner join ClientiComenzi_TD CC on CPC.xnIdClientComanda = CC.nId
+	where CC.xnIdFactura = @xnIdFactura
+
+END
+
+-$$$-
+
+IF COL_LENGTH('ClientiPlati_TD','tObservatii') IS NULL
+BEGIN
+	ALTER TABLE ClientiPlati_TD
+	ADD tObservatii nvarchar(500) NULL
+END
+
+-$$$-
+
+IF OBJECT_ID('ClientiPlati_TD_V', 'V') IS NOT NULL
+    DROP VIEW ClientiPlati_TD_V;
+
+-$$$-
+
+CREATE VIEW [dbo].[ClientiPlati_TD_V]
+AS
+SELECT        dbo.ClientiPlati_TD.nId, dbo.ClientiPlati_TD.xnIdClient, dbo.ClientiPlati_TD.dDataPlata, dbo.ClientiPlati_TD.nSumaPlatita, dbo.ClientiPlati_TD.nModalitatePlata, dbo.ClientiPlati_TD.nCursBNR, 
+                         dbo.ClientiPlati_TD.xnUtilizatorCreare, dbo.ClientiPlati_TD.dDataCreare, dbo.ClientiPlati_TD.dDataInchidere, dbo.ClientiPlati_TD.xnUtilizatorInchidere, dbo.ClientiPlati_TD.tMotivInchidere, dbo.ClientiPlati_TD.tObservatii, 
+                         dbo.Clienti_TD.tDenumire
+FROM            dbo.ClientiPlati_TD INNER JOIN
+                         dbo.Clienti_TD ON dbo.ClientiPlati_TD.xnIdClient = dbo.Clienti_TD.nId
+
+-$$$-
+
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND OBJECT_ID = OBJECT_ID('ClientiComenzi_TD_GetListaNeachitateIntegral'))
+DROP PROCEDURE [dbo].[ClientiComenzi_TD_GetListaNeachitateIntegral]
+
+-$$$-
+
+CREATE PROCEDURE [dbo].[ClientiComenzi_TD_GetListaNeachitateIntegral] @xnIdClient int
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+	
+	SELECT * FROM ClientiComenzi_TD WHERE xnIdClient = @xnIdClient and xnIdFactura is not null AND nId IN
+	(
+	SELECT CC.nId from ClientiComenzi_TD AS CC LEFT OUTER JOIN 
+	(SELECT xnIdClientComanda, SUM(nValoare) AS nTotalPlati FROM ClientiPlatiComenzi_TD WHERE xnIdClient = @xnIdClient
+	GROUP BY xnIdClientComanda) AS CPC ON CC.nId = CPC.xnIdClientComanda AND CC.xnIdClient = @xnIdClient
+	WHERE CC.nValoareFinala - ISNULL( CPC.nTotalPlati,0) <> 0 
+	)
+
+END
+
+-$$$-

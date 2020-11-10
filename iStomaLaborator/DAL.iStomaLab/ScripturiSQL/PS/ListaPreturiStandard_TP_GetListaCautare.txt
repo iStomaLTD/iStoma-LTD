@@ -1,0 +1,15 @@
+﻿CREATE PROCEDURE [dbo].[ListaPreturiStandard_TP_GetListaCautare] 
+    @tDenumire nVarChar(100)
+AS
+BEGIN
+
+    SELECT nId, tDenumire FROM ListaPreturiStandard_TP
+	WHERE (tDenumire LIKE @tDenumire collate Latin1_General_BIN2 OR 
+	tDenumirePrescurtata LIKE @tDenumire collate Latin1_General_BIN2 OR 
+	tCodIntern LIKE @tDenumire collate Latin1_General_BIN2) AND dDataInchidere IS NULL 
+	ORDER BY tDenumire asc
+
+END
+
+
+GO

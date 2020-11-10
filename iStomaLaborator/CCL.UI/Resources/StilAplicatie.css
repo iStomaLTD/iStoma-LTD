@@ -1,0 +1,55 @@
+﻿body
+{
+}
+
+.divPacientInteractiune
+{
+    border: solid 1px black;
+    width: 400px;
+    height: 100px;
+    text-align: center;
+}
+
+.aPacient
+{
+}
+
+.zonaDeText
+{
+}
+
+.divNotificariInteractiune
+{
+    width: 150px;
+    text-align: center;
+    color: red;
+}
+
+.ImaginePacientInteractiune
+{
+    width: 100px;
+    height: 100px;
+    border: solid 1px black;
+    margin-left: 25px;
+    margin-top: 5px;
+}
+
+.ButonActiuneInteractiune
+{
+    flow: left;
+    width: 20px;
+    height: 20px;
+    margin-right:10px;
+}
+
+.NumePacientInteractiune
+{
+    text-decoration: none;
+    color: black;
+}
+
+.ObservatiiInteractiune
+{
+    min-width: 120px;
+    max-width: 120px;
+}

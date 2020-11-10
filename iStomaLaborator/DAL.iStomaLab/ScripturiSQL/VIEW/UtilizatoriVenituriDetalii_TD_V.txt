@@ -1,0 +1,10 @@
+DROP VIEW [dbo].[UtilizatoriVenituriDetalii_TD_V]
+GO
+
+CREATE VIEW [dbo].[UtilizatoriVenituriDetalii_TD_V]
+AS
+SELECT        UVD.nId, UVD.dDataCreare, UVD.xnUtilizatorCreare, UVD.xnIdUtilizatoriVenituri, UVD.xnIdEtapa, UVD.nPret, UV.dDataInceput, UV.dDataFinal, UV.xnIdUtilizator, E.tDenumire, UV.dDataInchidere
+FROM            dbo.UtilizatoriVenituriDetalii_TD AS UVD INNER JOIN
+                         dbo.UtilizatoriVenituri_TD AS UV ON UVD.xnIdUtilizatoriVenituri = UV.nId INNER JOIN
+                         dbo.Etape_TP AS E ON UVD.xnIdEtapa = E.nId
+

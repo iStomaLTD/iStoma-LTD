@@ -1,0 +1,489 @@
+﻿---adaugare coloana nTipContract in tabela Utilizator_TD
+
+alter table dbo.Utilizator_TD add nTipContract tinyint
+alter table dbo.Utilizator_TD add dDataContract date
+alter table dbo.Utilizator_TD add dDataIncetareContract date
+alter table dbo.Utilizator_TD add nOreNorma int
+alter table dbo.Utilizator_TD add tNumarContract nvarchar(100)
+alter table dbo.Utilizator_TD add xnIdAdresa int
+
+---adaugare tabela Emailuri_Extrase
+/****** Object:  Table [dbo].[Emailuri_Extrase_TD]    Script Date: 11.10.2017 13:20:27 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[Emailuri_Extrase_TD](
+	[nId] [int] IDENTITY(1,1) NOT NULL,
+	[xnIdEmail] [int] NOT NULL,
+	[nFlag] [tinyint] NULL,
+	[nNumarAtasamente] [int] NULL,
+	[dDataServer] [datetime] NULL,
+	[tSubiect] [nvarchar](200) NULL,
+	[tExpeditor] [nvarchar] (200) NULL,
+	[tDestinatar] [nvarchar] (200) NULL,
+	[nIdUnic] [int] NULL,
+	[tObservatii] [nvarchar] (500) NULL,
+	[dDataCreare] [datetime] NOT NULL,
+	[xnUtilizatorCreare] [int] NOT NULL,
+	[dDataInchidere] [datetime] NULL,
+	[xnUtilizatorInchidere] [int] NULL,
+	[tMotivInchidere] [nvarchar](500) NULL,
+ CONSTRAINT [PK_Emailuri_Extrase_TD] PRIMARY KEY CLUSTERED 
+(
+	[nId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[Emailuri_Extrase_TD] ADD  CONSTRAINT [DF_Emailuri_Extrase_TD_dDataCreare]  DEFAULT (getdate()) FOR [dDataCreare]
+GO
+
+--- adaugare tabela ClientiCabinete_TD
+
+USE [iStomaLab]
+GO
+
+/****** Object:  Table [dbo].[ClientiCabinete_TD]    Script Date: 12.10.2017 11:37:27 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[ClientiCabinete_TD](
+	[nId] [int] IDENTITY(1,1) NOT NULL,
+	[xnIdClient] [int] NOT NULL,
+	[tDenumire] [nvarchar] (200) NOT NULL,
+	[xnIdAdresa] [int] NOT NULL,
+	[dDataCreare] [datetime] NULL,
+	[xnUtilizatorCreare] [int] NULL,
+	[dDataInchidere] [datetime] NULL,
+	[xnUtilizatorInchidere] [int] NULL,
+	[tMotivInchidere] [nvarchar](500) NULL,
+ CONSTRAINT [PK_ClientiCabinete_TD] PRIMARY KEY CLUSTERED 
+(
+	[nId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[ClientiCabinete_TD] ADD  CONSTRAINT [DF_ClientiCabinete_TD_dDataCreare]  DEFAULT (getdate()) FOR [dDataCreare]
+GO
+
+---adaugare coloane in tabela ClientiComenzi
+
+alter table dbo.ClientiComenzi_TD add xnIdCabinet int
+alter table dbo.ClientiComenzi_TD add xnIdLucrare int
+alter table dbo.ClientiComenzi_TD add nValoareInitiala money
+alter table dbo.ClientiComenzi_TD add nValoareFinala money
+alter table dbo.ClientiComenzi_TD add xnIdFactura int
+alter table dbo.ClientiComenzi_TD add nMoneda tinyint
+
+
+---modificat la view-ul Adrese_Td_V cu LEFT OUTER JOIN
+
+---creare tabela ClientiComenziEtape
+
+USE [iStomaLab]
+GO
+
+/****** Object:  Table [dbo].[ClientiComenziEtape_TD]    Script Date: 13.10.2017 13:27:13 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[ClientiComenziEtape_TD](
+	[nId] [int] IDENTITY(1,1) NOT NULL,
+	[xnIdComandaClient] [int] NOT NULL,
+	[xnIdEtapa] [int] NOT NULL,
+	[dDataInceput] [datetime] NULL,
+	[dDataFinal] [datetime] NULL,
+	[xnIdTehnician] [int] NULL,
+	[tObservatii] [nvarchar](500) NULL,
+	[dDataCreare] [datetime] NULL,
+	[xnUtilizatorCreare] [int] NULL,
+	[dDataInchidere] [datetime] NULL,
+	[xnUtilizatorInchidere] [int] NULL,
+	[tMotivInchidere] [nvarchar](500) NULL,
+ CONSTRAINT [PK_ClientiComenziEtape_TD] PRIMARY KEY CLUSTERED 
+(
+	[nId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[ClientiComenziEtape_TD] ADD  CONSTRAINT [DF_ClientiComenziEtape_TD_dDataCreare]  DEFAULT (getdate()) FOR [dDataCreare]
+GO
+
+
+---tabela Banci_TP
+
+CREATE TABLE [dbo].[Banci_TP](
+    [nId] [int] IDENTITY(1,1) NOT NULL,
+    [tDenumire] [nvarchar](50) NOT NULL,
+    [dDataCreare] [datetime] NULL,
+    [xnUtilizatorCreare] [int] NULL,
+    [dDataInchidere] [datetime] NULL,
+    [xnUtilizatorInchidere] [int] NULL,
+    [tMotivInchidere] [nvarchar](500) NULL,
+    [tInformatiiComplementare] [nvarchar](2000) NULL,
+ CONSTRAINT [PK_Banci_TP] PRIMARY KEY CLUSTERED
+(
+    [nId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+----introducere valori in tabela Banci_TP
+
+INSERT INTO Banci_TP(tDenumire) values(N'Alpha Bank')
+INSERT INTO Banci_TP(tDenumire) values(N'Anglo-Romanian Bank')
+INSERT INTO Banci_TP(tDenumire) values(N'ATE Bank')
+INSERT INTO Banci_TP(tDenumire) values(N'Banca C.R. Firenze')
+INSERT INTO Banci_TP(tDenumire) values(N'Banca Comerciala Carpatica')
+INSERT INTO Banci_TP(tDenumire) values(N'EximBank')
+INSERT INTO Banci_TP(tDenumire) values(N'Banca di Roma')
+INSERT INTO Banci_TP(tDenumire) values(N'Banca Italo Romena')
+INSERT INTO Banci_TP(tDenumire) values(N'Banca Romaneasca')
+INSERT INTO Banci_TP(tDenumire) values(N'Banca Transilvania')
+INSERT INTO Banci_TP(tDenumire) values(N'Bancpost')
+INSERT INTO Banci_TP(tDenumire) values(N'BCR')
+INSERT INTO Banci_TP(tDenumire) values(N'BRD - Groupe Societe Generale')
+INSERT INTO Banci_TP(tDenumire) values(N'CEC')
+INSERT INTO Banci_TP(tDenumire) values(N'Citibank')
+INSERT INTO Banci_TP(tDenumire) values(N'CreditEurope Bank')
+INSERT INTO Banci_TP(tDenumire) values(N'Egnatia Bank')
+INSERT INTO Banci_TP(tDenumire) values(N'Emporiki Bank')
+INSERT INTO Banci_TP(tDenumire) values(N'GarantiBank')
+INSERT INTO Banci_TP(tDenumire) values(N'HVB Locuinte')
+INSERT INTO Banci_TP(tDenumire) values(N'ING Bank')
+INSERT INTO Banci_TP(tDenumire) values(N'la Caixa')
+INSERT INTO Banci_TP(tDenumire) values(N'Leumi Bank')
+INSERT INTO Banci_TP(tDenumire) values(N'Libra Bank')
+INSERT INTO Banci_TP(tDenumire) values(N'Marfin Bank')
+INSERT INTO Banci_TP(tDenumire) values(N'Millennium Bank')
+INSERT INTO Banci_TP(tDenumire) values(N'MKB Romexterra Bank')
+INSERT INTO Banci_TP(tDenumire) values(N'OTP Bank')
+INSERT INTO Banci_TP(tDenumire) values(N'Piraeus Bank')
+INSERT INTO Banci_TP(tDenumire) values(N'Porsche Bank')
+INSERT INTO Banci_TP(tDenumire) values(N'ProCredit Bank')
+INSERT INTO Banci_TP(tDenumire) values(N'Raiffeisen Bank')
+INSERT INTO Banci_TP(tDenumire) values(N'Raiffeisen Locuinte')
+INSERT INTO Banci_TP(tDenumire) values(N'RBS')
+INSERT INTO Banci_TP(tDenumire) values(N'Romanian International Bank')
+INSERT INTO Banci_TP(tDenumire) values(N'Sanpaolo Imi Bank')
+INSERT INTO Banci_TP(tDenumire) values(N'UniCredit Tiriac')
+INSERT INTO Banci_TP(tDenumire) values(N'Volksbank')
+
+--------------
+
+--introducere campuri in tabela Utilizator_TD
+
+alter table dbo.Utilizator_TD add tEmisDe nvarchar(40)
+alter table dbo.Utilizator_TD add dValabilitateInceput date
+alter table dbo.Utilizator_TD add dValabilitateSfarsit date
+alter table dbo.Utilizator_TD add tIban varchar(40)
+alter table dbo.Utilizator_TD add xnIdBanca int
+
+
+-----
+
+
+---introducere date in tabela Tari_REF
+
+SET IDENTITY_INSERT [dbo].[Tari_REF] ON 
+
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (1, N'Monaco', NULL, NULL, NULL, N'Monaco', 1, 0, CAST(N'2016-10-18 13:06:24.673' AS DateTime), NULL, NULL, NULL, NULL)
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (2, N'Singapore', NULL, NULL, NULL, N'Singapore', 1, 0, CAST(N'2016-10-18 13:06:24.673' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (3, N'Vatican', NULL, NULL, NULL, N'Vatican', 1, 0, CAST(N'2016-10-18 13:06:24.673' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (4, N'Malta', NULL, NULL, NULL, N'Malta', 1, 0, CAST(N'2016-10-18 13:06:24.673' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (5, N'Maldive', NULL, NULL, NULL, N'Maldive', 1, 0, CAST(N'2016-10-18 13:06:24.673' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (6, N'Bahrain', NULL, NULL, NULL, N'Bahrain', 1, 0, CAST(N'2016-10-18 13:06:24.673' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (7, N'Bangladesh', NULL, NULL, NULL, N'Bangladesh', 1, 0, CAST(N'2016-10-18 13:06:24.673' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (8, N'Barbados', NULL, NULL, NULL, N'Barbados', 1, 0, CAST(N'2016-10-18 13:06:24.677' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (9, N'Taiwan', NULL, NULL, NULL, N'Taiwan', 1, 0, CAST(N'2016-10-18 13:06:24.677' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (10, N'Nauru', NULL, NULL, NULL, N'Nauru', 1, 0, CAST(N'2016-10-18 13:06:24.677' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (11, N'Mauritius', NULL, NULL, NULL, N'Mauritius', 1, 0, CAST(N'2016-10-18 13:06:24.677' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (12, N'Coreea de Sud', NULL, NULL, NULL, N'Coreea de Sud', 1, 0, CAST(N'2016-10-18 13:06:24.677' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (13, N'San Marino', NULL, NULL, NULL, N'San Marino', 1, 0, CAST(N'2016-10-18 13:06:24.677' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (14, N'Tuvalu', NULL, NULL, NULL, N'Tuvalu', 1, 0, CAST(N'2016-10-18 13:06:24.677' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (15, N'Olanda', NULL, NULL, NULL, N'Olanda', 1, 0, CAST(N'2016-10-18 13:06:24.677' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (16, N'Liban', NULL, NULL, NULL, N'Liban', 1, 0, CAST(N'2016-10-18 13:06:24.677' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (17, N'Komore', NULL, NULL, NULL, N'Komore', 1, 0, CAST(N'2016-10-18 13:06:24.677' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (18, N'Japonia', NULL, NULL, NULL, N'Japonia', 1, 0, CAST(N'2016-10-18 13:06:24.677' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (19, N'India', NULL, NULL, NULL, N'India', 1, 0, CAST(N'2016-10-18 13:06:24.677' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (20, N'Marshall', NULL, NULL, NULL, N'Marshall', 1, 0, CAST(N'2016-10-18 13:06:24.677' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (21, N'Ruanda', NULL, NULL, NULL, N'Ruanda', 1, 0, CAST(N'2016-10-18 13:06:24.677' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (22, N'El Salvador', NULL, NULL, NULL, N'El Salvador', 1, 0, CAST(N'2016-10-18 13:06:24.677' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (23, N'Belgia', NULL, NULL, NULL, N'Belgia', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (24, N'Sri Lanka', NULL, NULL, NULL, N'Sri Lanka', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (25, N'St. Vincent și Grenadine', NULL, NULL, NULL, N'St. Vincent și Grenadine', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (26, N'Israel', NULL, NULL, NULL, N'Israel', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (27, N'Filipine', NULL, NULL, NULL, N'Filipine', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (28, N'Haiti', NULL, NULL, NULL, N'Haiti', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (29, N'Burundi', NULL, NULL, NULL, N'Burundi', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (30, N'St. Lucia', NULL, NULL, NULL, N'St. Lucia', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (31, N'Grenada', NULL, NULL, NULL, N'Grenada', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (32, N'Vietnam', NULL, NULL, NULL, N'Vietnam', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (33, N'Jamaica', NULL, NULL, NULL, N'Jamaica', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (34, N'Marea Britanie', NULL, NULL, NULL, N'Marea Britanie', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (35, N'Germania', NULL, NULL, NULL, N'Germania', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (36, N'Liechtenstein', NULL, NULL, NULL, N'Liechtenstein', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (37, N'Trinidad și Tobago', NULL, NULL, NULL, N'Trinidad și Tobago', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (38, N'Pakistan', NULL, NULL, NULL, N'Pakistan', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (39, N'Italia', NULL, NULL, NULL, N'Italia', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (40, N'Nepal', NULL, NULL, NULL, N'Nepal', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (41, N'Republica Dominicană', NULL, NULL, NULL, N'Republica Dominicană', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (42, N'Coreea de Nord', NULL, NULL, NULL, N'Coreea de Nord', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (43, N'São Tomé și Príncipe', NULL, NULL, NULL, N'São Tomé și Príncipe', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (44, N'Elveția', NULL, NULL, NULL, N'Elveția', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (45, N'Luxemburg', NULL, NULL, NULL, N'Luxemburg', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (46, N'Seychelles', NULL, NULL, NULL, N'Seychelles', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (47, N'Antigua și Barbuda', NULL, NULL, NULL, N'Antigua și Barbuda', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (48, N'Statele federative din Micronezia', NULL, NULL, NULL, N'Statele federative din Micronezia', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (49, N'Andorra', NULL, NULL, NULL, N'Andorra', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (50, N'Tonga', NULL, NULL, NULL, N'Tonga', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (51, N'St. Kitts și Nevis', NULL, NULL, NULL, N'St. Kitts și Nevis', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (52, N'Gambia', NULL, NULL, NULL, N'Gambia', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (53, N'Nigeria', NULL, NULL, NULL, N'Nigeria', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (54, N'China', NULL, NULL, NULL, N'China', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (55, N'Guatemala', NULL, NULL, NULL, N'Guatemala', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (56, N'Moldova', NULL, NULL, NULL, N'Moldovean', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (57, N'Kuwait', NULL, NULL, NULL, N'Kuwait', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (58, N'Cehia', NULL, NULL, NULL, N'Cehia', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (59, N'Thailanda', NULL, NULL, NULL, N'Thailanda', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (60, N'Kiribati', NULL, NULL, NULL, N'Kiribati', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (61, N'Serbia', NULL, NULL, NULL, N'Serbia', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (62, N'Danemarca', NULL, NULL, NULL, N'Danemarca', 1, 1, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (63, N'Indonezia', NULL, NULL, NULL, N'Indonezia', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (64, N'Polonia', NULL, NULL, NULL, N'Polonia', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (65, N'Albania', NULL, NULL, NULL, N'Albania', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (66, N'Portugalia', NULL, NULL, NULL, N'Portugalia', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (67, N'Uganda', NULL, NULL, NULL, N'Uganda', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (68, N'Franța', NULL, NULL, NULL, N'Francez', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (69, N'Slovacia', NULL, NULL, NULL, N'Slovacia', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (70, N'Ungaria', NULL, NULL, NULL, N'Ungaria', 1, 0, CAST(N'2016-10-18 13:06:24.680' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (71, N'Malawi', NULL, NULL, NULL, N'Malawi', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (72, N'Cap Verde', NULL, NULL, NULL, N'Cap Verde', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (73, N'Cuba', NULL, NULL, NULL, N'Cuba', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (74, N'Armenia', NULL, NULL, NULL, N'Armenia', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (75, N'Togo', NULL, NULL, NULL, N'Togo', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (76, N'Siria', NULL, NULL, NULL, N'Siria', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (77, N'Slovenia', NULL, NULL, NULL, N'Slovenia', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (78, N'Austria', NULL, NULL, NULL, N'Austria', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (79, N'România', NULL, NULL, NULL, N'Română', 1, 47, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (80, N'Dominica', NULL, NULL, NULL, N'Dominica', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (81, N'Azerbaidjan', NULL, NULL, NULL, N'Azerbaidjan', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (82, N'Turcia', NULL, NULL, NULL, N'Turcia', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (83, N'Ghana', NULL, NULL, NULL, N'Ghana', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (84, N'Cipru', NULL, NULL, NULL, N'Cipru', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (85, N'Sierra Leone', NULL, NULL, NULL, N'Sierra Leone', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (86, N'Macedonia', NULL, NULL, NULL, N'Macedonia', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (87, N'Grecia', NULL, NULL, NULL, N'Grecia', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (88, N'Spania', NULL, NULL, NULL, N'Spania', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (89, N'Croația', NULL, NULL, NULL, N'Croația', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (90, N'Bosnia și Herțegovina', NULL, NULL, NULL, N'Bosnia și Herțegovina', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (91, N'Costa Rica', NULL, NULL, NULL, N'Costa Rica', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (92, N'Ucraina', NULL, NULL, NULL, N'Ucraina', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (93, N'Egipt', NULL, NULL, NULL, N'Egipt', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (94, N'Cambodgia', NULL, NULL, NULL, N'Cambodgia', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (95, N'Katar', NULL, NULL, NULL, N'Katar', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (96, N'Maroc', NULL, NULL, NULL, N'Maroc', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (97, N'Malaezia', NULL, NULL, NULL, N'Malaezia', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (98, N'Timorul de Est', NULL, NULL, NULL, N'Timorul de Est', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (99, N'Swasiland', NULL, NULL, NULL, N'Swasiland', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (100, N'Bulgaria', NULL, NULL, NULL, N'Bulgaria', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (101, N'Georgia', NULL, NULL, NULL, N'Georgia', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (102, N'Benin', NULL, NULL, NULL, N'Benin', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (103, N'Etiopia', NULL, NULL, NULL, N'Etiopia', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (104, N'Brunei', NULL, NULL, NULL, N'Brunei', 1, 0, CAST(N'2016-10-18 13:06:24.683' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (105, N'Myanmar', NULL, NULL, NULL, N'Myanmar', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (106, N'Iordania', NULL, NULL, NULL, N'Iordania', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (107, N'Honduras', NULL, NULL, NULL, N'Honduras', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (108, N'Tunisia', NULL, NULL, NULL, N'Tunisia', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (109, N'Lesotho', NULL, NULL, NULL, N'Lesotho', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (110, N'Samoa', NULL, NULL, NULL, N'Samoa', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (111, N'Uzbekistan', NULL, NULL, NULL, N'Uzbekistan', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (112, N'Irak', NULL, NULL, NULL, N'Irak', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (113, N'Kenia', NULL, NULL, NULL, N'Kenia', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (114, N'Irlanda', NULL, NULL, NULL, N'Irlanda', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (115, N'Senegal', NULL, NULL, NULL, N'Senegal', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (116, N'Lituania', NULL, NULL, NULL, N'Lituania', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (117, N'Mexic', NULL, NULL, NULL, N'Mexic', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (118, N'Coasta de Fildeș', NULL, NULL, NULL, N'Coasta de Fildeș', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (119, N'Burkina Faso', NULL, NULL, NULL, N'Burkina Faso', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (120, N'Tadjikistan', NULL, NULL, NULL, N'Tadjikistan', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (121, N'Bielorusia', NULL, NULL, NULL, N'Bielorusia', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (122, N'Fiji', NULL, NULL, NULL, N'Fiji', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (123, N'Bhutan', NULL, NULL, NULL, N'Bhutan', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (124, N'Ecuador', NULL, NULL, NULL, N'Ecuador', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (125, N'Montenegro', NULL, NULL, NULL, N'Montenegro', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (126, N'Afghanistan', NULL, NULL, NULL, N'Afghan', 1, 1, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (127, N'Palau', NULL, NULL, NULL, N'Palau', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (128, N'Nicaragua', NULL, NULL, NULL, N'Nicaragua', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (129, N'Iran', NULL, NULL, NULL, N'Iran', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (130, N'Tanzania', NULL, NULL, NULL, N'Tanzania', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (131, N'Jemen', NULL, NULL, NULL, N'Jemen', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (132, N'Guineea-Bissau', NULL, NULL, NULL, N'Guineea-Bissau', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (133, N'Panama', NULL, NULL, NULL, N'Panama', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (134, N'Guinea', NULL, NULL, NULL, N'Guinea', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (135, N'Columbia', NULL, NULL, NULL, N'Columbia', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (136, N'Eritreea', NULL, NULL, NULL, N'Eritreea', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (137, N'Africa de Sud', NULL, NULL, NULL, N'Africa de Sud', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (138, N'Letonia', NULL, NULL, NULL, N'Letonia', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (139, N'Camerun', NULL, NULL, NULL, N'Camerun', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (140, N'Zimbabwe', NULL, NULL, NULL, N'Zimbabwe', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (141, N'Liberia', NULL, NULL, NULL, N'Liberia', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (142, N'Emiratele Arabe Unite', NULL, NULL, NULL, N'Emiratele Arabe Unite', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (143, N'SUA', NULL, NULL, NULL, N'SUA', 1, 0, CAST(N'2016-10-18 13:06:24.687' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (144, N'Madagascar', NULL, NULL, NULL, N'Madagascar', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (145, N'Estonia', NULL, NULL, NULL, N'Estonia', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (146, N'Venezuela', NULL, NULL, NULL, N'Venezuela', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (147, N'Laos', NULL, NULL, NULL, N'Laos', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (148, N'Kirghizstan', NULL, NULL, NULL, N'Kirghizstan', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (149, N'Congo', NULL, NULL, NULL, N'Congo', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (150, N'Mozambic', NULL, NULL, NULL, N'Mozambic', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (151, N'Brazilia', NULL, NULL, NULL, N'Brazilia', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (152, N'Peru', NULL, NULL, NULL, N'Peru', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (153, N'Bahamas', NULL, NULL, NULL, N'Bahamas', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (154, N'Chile', NULL, NULL, NULL, N'Chile', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (155, N'Djibouti', NULL, NULL, NULL, N'Djibouti', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (156, N'Suedia', NULL, NULL, NULL, N'Suedia', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (157, N'Uruguai', NULL, NULL, NULL, N'Uruguai', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (158, N'Guineea Ecuatorială', NULL, NULL, NULL, N'Guineea Ecuatorială', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (159, N'Solomon', NULL, NULL, NULL, N'Solomon', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (160, N'Vanuatu', NULL, NULL, NULL, N'Vanuatu', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (161, N'Sudan', NULL, NULL, NULL, N'Sudan', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (162, N'Paraguay', NULL, NULL, NULL, N'Paraguay', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (163, N'Finlanda', NULL, NULL, NULL, N'Finlanda', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (164, N'Noua Zeelandă', NULL, NULL, NULL, N'Noua Zeelandă', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (165, N'Zambia', NULL, NULL, NULL, N'Zambia', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (166, N'Argentina', NULL, NULL, NULL, N'Argentina', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (167, N'Oman', NULL, NULL, NULL, N'Oman', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (168, N'Algeria', NULL, NULL, NULL, N'Algeria', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (169, N'Arabia Saudită', NULL, NULL, NULL, N'Arabia Saudită', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (170, N'Somalia', NULL, NULL, NULL, N'Somalia', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (171, N'Norvegia', NULL, NULL, NULL, N'Norvegia', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (172, N'Belize', NULL, NULL, NULL, N'Belize', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (173, N'Papua Noua Guinee', NULL, NULL, NULL, N'Papua Noua Guinee', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (174, N'Turkmenistan', NULL, NULL, NULL, N'Turkmenistan', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (175, N'Mali', NULL, NULL, NULL, N'Mali', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (176, N'Nigeria', NULL, NULL, NULL, N'Nigeria', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (177, N'Angola', NULL, NULL, NULL, N'Angola', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (178, N'Republica Congo', NULL, NULL, NULL, N'Republica Congo', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (179, N'Rusia', NULL, NULL, NULL, N'Rusia', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (180, N'Bolivia', NULL, NULL, NULL, N'Bolivia', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (181, N'Ciad', NULL, NULL, NULL, N'Ciad', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (182, N'Republica Central Africană', NULL, NULL, NULL, N'Republica Central Africană', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (183, N'Kazahstan', NULL, NULL, NULL, N'Kazahstan', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (184, N'Gabon', NULL, NULL, NULL, N'Gabon', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (185, N'Guyana', NULL, NULL, NULL, N'Guyana', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (186, N'Canada', NULL, NULL, NULL, N'Canada', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (187, N'Libia', NULL, NULL, NULL, N'Libia', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (188, N'Mauritania', NULL, NULL, NULL, N'Mauritania', 1, 0, CAST(N'2016-10-18 13:06:24.690' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (189, N'Islanda', NULL, NULL, NULL, N'Islanda', 1, 0, CAST(N'2016-10-18 13:06:24.693' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (190, N'Surinam', NULL, NULL, NULL, N'Surinam', 1, 0, CAST(N'2016-10-18 13:06:24.693' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (191, N'Botswana', NULL, NULL, NULL, N'Botswana', 1, 0, CAST(N'2016-10-18 13:06:24.693' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (192, N'Australia', NULL, NULL, NULL, N'Australia', 1, 0, CAST(N'2016-10-18 13:06:24.693' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (193, N'Namibia', NULL, NULL, NULL, N'Namibia', 1, 0, CAST(N'2016-10-18 13:06:24.693' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Tari_REF] (nId, tNumeScurt, tNumeOficial, tPrefixTelefonic, tAbreviere, tCetatenie, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES (194, N'Mongolia', NULL, NULL, NULL, N'Mongolia', 1, 0, CAST(N'2016-10-18 13:06:24.693' AS DateTime), NULL, NULL, NULL, NULL)																								
+
+----------------
+
+----inserare valori initiale in tabela Regiuni_REF
+
+
+
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(1, 79, N'Alba', N'AB', N'258       ', 1, 0, CAST(N'2016-10-18 13:06:24.730' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(2, 79, N'Arad', N'AR', N'257       ', 1, 0, CAST(N'2016-10-18 13:06:24.730' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(3, 79, N'Argeș', N'AG', N'248       ', 1, 0, CAST(N'2016-10-18 13:06:24.730' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(4, 79, N'Bacău', N'BC', N'234       ', 1, 0, CAST(N'2016-10-18 13:06:24.730' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(5, 79, N'Bihor', N'BH', N'259       ', 1, 1, CAST(N'2016-10-18 13:06:24.730' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(6, 79, N'Bistrița-Năsăud', N'BN', N'263       ', 1, 0, CAST(N'2016-10-18 13:06:24.733' AS DateTime), NULL, NULL, NULL, NULL)																							
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(7, 79, N'Botoșani', N'BT', N'231       ', 1, 0, CAST(N'2016-10-18 13:06:24.733' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(8, 79, N'Brașov', N'BV', N'268       ', 1, 0, CAST(N'2016-10-18 13:06:24.733' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(9, 79, N'Brăila', N'BR', N'239       ', 1, 0, CAST(N'2016-10-18 13:06:24.733' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(10, 79, N'Buzău', N'BZ', N'238       ', 1, 0, CAST(N'2016-10-18 13:06:24.733' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(11, 79, N'Caraș-Severin', N'CS', N'255       ', 1, 0, CAST(N'2016-10-18 13:06:24.733' AS DateTime), NULL, NULL, NULL, NULL)																							
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(12, 79, N'Cluj', N'CJ', N'264       ', 1, 0, CAST(N'2016-10-18 13:06:24.733' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(13, 79, N'Constanța', N'CT', N'241       ', 1, 0, CAST(N'2016-10-18 13:06:24.733' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(14, 79, N'Covasna', N'CV', N'267       ', 1, 0, CAST(N'2016-10-18 13:06:24.733' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(15, 79, N'Dâmbovița', N'DB', N'245       ', 1, 0, CAST(N'2016-10-18 13:06:24.737' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(16, 79, N'Dolj', N'DJ', N'251       ', 1, 0, CAST(N'2016-10-18 13:06:24.737' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(17, 79, N'Galați', N'GL', N'236       ', 1, 0, CAST(N'2016-10-18 13:06:24.737' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(18, 79, N'Gorj', N'GJ', N'253       ', 1, 0, CAST(N'2016-10-18 13:06:24.737' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(19, 79, N'Harghita', N'HR', N'266       ', 1, 0, CAST(N'2016-10-18 13:06:24.737' AS DateTime), NULL, NULL, NULL, NULL)																							
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(20, 79, N'Hunedoara', N'HD', N'254       ', 1, 0, CAST(N'2016-10-18 13:06:24.737' AS DateTime), NULL, NULL, NULL, NULL)																							
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(21, 79, N'Ialomița', N'IL', N'243       ', 1, 0, CAST(N'2016-10-18 13:06:24.737' AS DateTime), NULL, NULL, NULL, NULL)																							
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(22, 79, N'Iași', N'IS', N'232       ', 1, 0, CAST(N'2016-10-18 13:06:24.737' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(23, 79, N'Ilfov', N'IF', N'21        ', 1, 0, CAST(N'2016-10-18 13:06:24.737' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(24, 79, N'Maramureș', N'MM', N'262       ', 1, 0, CAST(N'2016-10-18 13:06:24.737' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(25, 79, N'Mehedinți', N'MH', N'252       ', 1, 0, CAST(N'2016-10-18 13:06:24.737' AS DateTime), NULL, NULL, NULL, NULL)																							
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(26, 79, N'Mureș', N'MS', N'265       ', 1, 0, CAST(N'2016-10-18 13:06:24.737' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(27, 79, N'Neamț', N'NT', N'233       ', 1, 0, CAST(N'2016-10-18 13:06:24.737' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(28, 79, N'Olt', N'OT', N'249       ', 1, 0, CAST(N'2016-10-18 13:06:24.737' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(29, 79, N'Prahova', N'PH', N'244       ', 1, 0, CAST(N'2016-10-18 13:06:24.737' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(30, 79, N'Satu Mare', N'SM', N'261       ', 1, 0, CAST(N'2016-10-18 13:06:24.737' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(31, 79, N'Sălaj', N'SJ', N'260       ', 1, 0, CAST(N'2016-10-18 13:06:24.737' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(32, 79, N'Sibiu', N'SB', N'269       ', 1, 0, CAST(N'2016-10-18 13:06:24.737' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(33, 79, N'Suceava', N'SV', N'230       ', 1, 0, CAST(N'2016-10-18 13:06:24.737' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(34, 79, N'Teleorman', N'TR', N'247       ', 1, 1, CAST(N'2016-10-18 13:06:24.737' AS DateTime), NULL, NULL, NULL, NULL)																							
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(35, 79, N'Timiș', N'TM', N'256       ', 1, 0, CAST(N'2016-10-18 13:06:24.737' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(36, 79, N'Tulcea', N'TL', N'240       ', 1, 0, CAST(N'2016-10-18 13:06:24.737' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(37, 79, N'Vaslui', N'VS', N'235       ', 1, 0, CAST(N'2016-10-18 13:06:24.737' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(38, 79, N'Vâlcea', N'VL', N'250       ', 1, 0, CAST(N'2016-10-18 13:06:24.737' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(39, 79, N'Vrancea', N'VN', N'237       ', 1, 0, CAST(N'2016-10-18 13:06:24.737' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(40, 79, N'București', N'B', N'21        ', 1, 5, CAST(N'2016-10-18 13:06:24.737' AS DateTime), NULL, NULL, NULL, NULL)																								
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(41, 79, N'Călărași', N'CL', N'242       ', 1, 1, CAST(N'2016-10-18 13:06:24.737' AS DateTime), NULL, NULL, NULL, NULL)																							
+INSERT [dbo].[Regiuni_REF] (nId, xnIdTara, tNume, tAbreviere, tPrefixTelefon, nLimbaDenumirii, nPreferinta, dDataCreare, xnUtilizatorCreare, dDataInchidere, xnUtilizatorInchidere, tMotivInchidere) VALUES	(42, 79, N'Giurgiu', N'GR', N'246       ', 1, 0, CAST(N'2016-10-18 13:06:24.737' AS DateTime), NULL, NULL, NULL, NULL)																								
+
+---------------------
+
+---adaugare coloane in tabela ClientiComenzi_TD
+
+alter table dbo.ClientiComenzi_TD add bUrgent bit
+alter table dbo.ClientiComenzi_TD add nNrElemente int
+
+-----------
+
+----adaugare coloane in tabela Clienti_TD
+
+alter table dbo.Clienti_TD add tIban varchar(40)
+alter table dbo.Clienti_TD add xnIdBanca int
+alter table dbo.Clienti_TD add tReprezentantLegal nvarchar(100)
+alter table dbo.Clienti_TD add nCalitateReprezentant int
+alter table dbo.Clienti_TD add nNumarContract smallint
+alter table dbo.Clienti_TD add dDataContract date
+alter table dbo.Clienti_TD add tObservatiiDateFirma nvarchar(500)
+
+
+-----------
+
+----------adaugare admin
+
+INSERT INTO dbo.Utilizator_TD(tNume,tPrenume,nRol,tContStoma,tParolaStoma)
+     VALUES
+           (''
+           ,''
+           ,1
+           ,'admin'
+           ,'21232f297a57a5a743894a0e4a801fc3')
+GO
+
+
+
+--------

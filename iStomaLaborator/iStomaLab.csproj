@@ -1,0 +1,1053 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CC10ACC8-7155-484D-8DDC-C99F8580AF71}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>iStomaLab</RootNamespace>
+    <AssemblyName>iStomaLab</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.1.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLLExterne\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="ILL.General">
+      <HintPath>..\DLL\ILL.General.dll</HintPath>
+    </Reference>
+    <Reference Include="ILL.iStomaLab, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ILL.iStomaLab\bin\Debug\ILL.iStomaLab.dll</HintPath>
+    </Reference>
+    <Reference Include="MailKit, Version=1.18.0.0, Culture=neutral, PublicKeyToken=4e064fe7c44a8f1b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLLExterne\MailKit.dll</HintPath>
+    </Reference>
+    <Reference Include="MimeKit, Version=1.18.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLLExterne\MimeKit.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLLUtile.cs" />
+    <Compile Include="Caramizi\ButonOptiuneMeniuStanga.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\ButonRubricaMeniuStanga.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\ControlCautareElement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Caramizi\ControlCautareElement.Designer.cs">
+      <DependentUpon>ControlCautareElement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\ControlCautareLocalitate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Caramizi\ControlCautareLocalitate.Designer.cs">
+      <DependentUpon>ControlCautareLocalitate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\ControlCautareRegiune.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Caramizi\ControlCautareRegiune.Designer.cs">
+      <DependentUpon>ControlCautareRegiune.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\ControlCautareTara.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Caramizi\ControlCautareTara.Designer.cs">
+      <DependentUpon>ControlCautareTara.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\controlCreare.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\controlCreare.Designer.cs">
+      <DependentUpon>controlCreare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\controlInchidere.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Caramizi\controlInchidere.Designer.cs">
+      <DependentUpon>controlInchidere.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\ControlPerioada.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Caramizi\ControlPerioada.Designer.cs">
+      <DependentUpon>ControlPerioada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\FormSelecteazaDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Caramizi\FormSelecteazaDate.Designer.cs">
+      <DependentUpon>FormSelecteazaDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\frmAfiseazaRezultatCautareLocalitate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Caramizi\frmAfiseazaRezultatCautareLocalitate.Designer.cs">
+      <DependentUpon>frmAfiseazaRezultatCautareLocalitate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\frmAfiseazaRezultatCautareRegiune.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Caramizi\frmAfiseazaRezultatCautareRegiune.Designer.cs">
+      <DependentUpon>frmAfiseazaRezultatCautareRegiune.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\frmAfiseazaRezultatCautareTara.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Caramizi\frmAfiseazaRezultatCautareTara.Designer.cs">
+      <DependentUpon>frmAfiseazaRezultatCautareTara.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\PanelOptiuniMeniuStanga.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\TreeViewFolderEmail.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\TreeViewFolderEmail.Designer.cs">
+      <DependentUpon>TreeViewFolderEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Comunicare\Email\ControlNewsletterEmail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Comunicare\Email\ControlNewsletterEmail.Designer.cs">
+      <DependentUpon>ControlNewsletterEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Comunicare\SMS\ControlNewsletterSMS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Comunicare\SMS\ControlNewsletterSMS.Designer.cs">
+      <DependentUpon>ControlNewsletterSMS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EcranPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EcranPrincipal.Designer.cs">
+      <DependentUpon>EcranPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Erori\frmEroare.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Erori\frmEroare.Designer.cs">
+      <DependentUpon>frmEroare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generale\ControlAdresaEmail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Generale\ControlAdresaEmail.Designer.cs">
+      <DependentUpon>ControlAdresaEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generale\ControlAdresaISTOMA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Generale\ControlAdresaISTOMA.Designer.cs">
+      <DependentUpon>ControlAdresaISTOMA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generale\ControlAdresaLiniara.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Generale\ControlAdresaLiniara.Designer.cs">
+      <DependentUpon>ControlAdresaLiniara.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generale\ControlCautareProfesie.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Generale\ControlCautareProfesie.Designer.cs">
+      <DependentUpon>ControlCautareProfesie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generale\ControlCautareRecomandant.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Generale\ControlCautareRecomandant.Designer.cs">
+      <DependentUpon>ControlCautareRecomandant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generale\ControlPauza.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Generale\ControlPauza.Designer.cs">
+      <DependentUpon>ControlPauza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generale\FormAdresaISTOMA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generale\FormAdresaISTOMA.Designer.cs">
+      <DependentUpon>FormAdresaISTOMA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generale\FormCheckInOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generale\FormCheckInOut.Designer.cs">
+      <DependentUpon>FormCheckInOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generale\FormExtrageEmailuri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generale\FormExtrageEmailuri.Designer.cs">
+      <DependentUpon>FormExtrageEmailuri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generale\FormListaCategorii.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generale\FormListaCategorii.Designer.cs">
+      <DependentUpon>FormListaCategorii.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generale\FormListaEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generale\FormListaEmail.Designer.cs">
+      <DependentUpon>FormListaEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generale\FormInchidereAplicatie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generale\FormInchidereAplicatie.Designer.cs">
+      <DependentUpon>FormInchidereAplicatie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generale\FormListaEtape.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generale\FormListaEtape.Designer.cs">
+      <DependentUpon>FormListaEtape.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generale\FormListaLucrari.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generale\FormListaLucrari.Designer.cs">
+      <DependentUpon>FormListaLucrari.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generale\FormListaUtilizatori.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generale\FormListaUtilizatori.Designer.cs">
+      <DependentUpon>FormListaUtilizatori.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generale\FormLocatie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generale\FormLocatie.Designer.cs">
+      <DependentUpon>FormLocatie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generale\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generale\FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generale\FormPersonalizat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generale\FormPersonalizat.Designer.cs">
+      <DependentUpon>FormPersonalizat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generale\frmAfiseazaAdresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generale\frmAfiseazaAdresa.Designer.cs">
+      <DependentUpon>frmAfiseazaAdresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generale\frmAfiseazaRezultatCautareProfesie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generale\frmAfiseazaRezultatCautareProfesie.Designer.cs">
+      <DependentUpon>frmAfiseazaRezultatCautareProfesie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generale\frmAfiseazaRezultatCautareRecomandant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generale\frmAfiseazaRezultatCautareRecomandant.Designer.cs">
+      <DependentUpon>frmAfiseazaRezultatCautareRecomandant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generale\UserControlPersonalizat.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Generale\UserControlPersonalizat.Designer.cs">
+      <DependentUpon>UserControlPersonalizat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestiuneErori.cs" />
+    <Compile Include="IHMUtile.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rapoarte\ControlListaRapoarte.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Rapoarte\ControlListaRapoarte.Designer.cs">
+      <DependentUpon>ControlListaRapoarte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Liste\Categorii\ControlDetaliiCategorie.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Setari\Liste\Categorii\ControlDetaliiCategorie.Designer.cs">
+      <DependentUpon>ControlDetaliiCategorie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Liste\Categorii\ControlListaCategorii.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Setari\Liste\Categorii\ControlListaCategorii.Designer.cs">
+      <DependentUpon>ControlListaCategorii.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Liste\Categorii\FormDetaliiCategorie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setari\Liste\Categorii\FormDetaliiCategorie.Designer.cs">
+      <DependentUpon>FormDetaliiCategorie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Liste\ListeParametrabile\ControlListaParametrabila.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Setari\Liste\ListeParametrabile\ControlListaParametrabila.Designer.cs">
+      <DependentUpon>ControlListaParametrabila.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Liste\Localitati\ControlAdaugaLocalitate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Setari\Liste\Localitati\ControlAdaugaLocalitate.Designer.cs">
+      <DependentUpon>ControlAdaugaLocalitate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Liste\Localitati\ControlDetaliuListaLocalitati.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Setari\Liste\Localitati\ControlDetaliuListaLocalitati.Designer.cs">
+      <DependentUpon>ControlDetaliuListaLocalitati.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Liste\Localitati\FormAdaugaLocalitate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setari\Liste\Localitati\FormAdaugaLocalitate.Designer.cs">
+      <DependentUpon>FormAdaugaLocalitate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Liste\Profesii\ControlAdaugareInListaProfesii.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Setari\Liste\Profesii\ControlAdaugareInListaProfesii.Designer.cs">
+      <DependentUpon>ControlAdaugareInListaProfesii.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Liste\Profesii\ControlDetaliuListaProfesii.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Setari\Liste\Profesii\ControlDetaliuListaProfesii.Designer.cs">
+      <DependentUpon>ControlDetaliuListaProfesii.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Liste\ControlGestiuneListe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Setari\Liste\ControlGestiuneListe.Designer.cs">
+      <DependentUpon>ControlGestiuneListe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Liste\Profesii\FormAdaugareInListaProfesii.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setari\Liste\Profesii\FormAdaugareInListaProfesii.Designer.cs">
+      <DependentUpon>FormAdaugareInListaProfesii.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Liste\Regiuni\ControlAdaugareRegiune.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Setari\Liste\Regiuni\ControlAdaugareRegiune.Designer.cs">
+      <DependentUpon>ControlAdaugareRegiune.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Liste\Regiuni\ControlDetaliuListaRegiuni.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Setari\Liste\Regiuni\ControlDetaliuListaRegiuni.Designer.cs">
+      <DependentUpon>ControlDetaliuListaRegiuni.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Liste\Regiuni\FormAdaugareRegiune.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setari\Liste\Regiuni\FormAdaugareRegiune.Designer.cs">
+      <DependentUpon>FormAdaugareRegiune.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Liste\Tari\ControlAdaugareTara.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Setari\Liste\Tari\ControlAdaugareTara.Designer.cs">
+      <DependentUpon>ControlAdaugareTara.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Liste\Tari\ControlDetaliuListaTari.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Setari\Liste\Tari\ControlDetaliuListaTari.Designer.cs">
+      <DependentUpon>ControlDetaliuListaTari.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Liste\Tari\FormAdaugareTara.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setari\Liste\Tari\FormAdaugareTara.Designer.cs">
+      <DependentUpon>FormAdaugareTara.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Locatii\ControlGestiuneLocatii.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Setari\Locatii\ControlGestiuneLocatii.Designer.cs">
+      <DependentUpon>ControlGestiuneLocatii.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Locatii\ControlListaLocatii.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Setari\Locatii\ControlListaLocatii.Designer.cs">
+      <DependentUpon>ControlListaLocatii.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Locatii\FormDetaliuLocatie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setari\Locatii\FormDetaliuLocatie.Designer.cs">
+      <DependentUpon>FormDetaliuLocatie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Locatii\ControlDetaliuLocatie.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Setari\Locatii\ControlDetaliuLocatie.Designer.cs">
+      <DependentUpon>ControlDetaliuLocatie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Lucrari\ControlDetaliuLucrare.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Setari\Lucrari\ControlDetaliuLucrare.Designer.cs">
+      <DependentUpon>ControlDetaliuLucrare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Lucrari\ControlEtape.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Setari\Lucrari\ControlEtape.Designer.cs">
+      <DependentUpon>ControlEtape.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Lucrari\ControlGestiuneListaDePreturi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Setari\Lucrari\ControlGestiuneListaDePreturi.Designer.cs">
+      <DependentUpon>ControlGestiuneListaDePreturi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Lucrari\ControlListaDePreturi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Setari\Lucrari\ControlListaDePreturi.Designer.cs">
+      <DependentUpon>ControlListaDePreturi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Lucrari\ControlListaDePreturiClienti.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Setari\Lucrari\ControlListaDePreturiClienti.Designer.cs">
+      <DependentUpon>ControlListaDePreturiClienti.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Lucrari\FormAdaugareEtapa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setari\Lucrari\FormAdaugareEtapa.Designer.cs">
+      <DependentUpon>FormAdaugareEtapa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Lucrari\FormDetaliuLucrare.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setari\Lucrari\FormDetaliuLucrare.Designer.cs">
+      <DependentUpon>FormDetaliuLucrare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Personal\ControlDetaliuUtilizator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Setari\Personal\ControlDetaliuUtilizator.Designer.cs">
+      <DependentUpon>ControlDetaliuUtilizator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Personal\ControlGestiunePersonal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Setari\Personal\ControlGestiunePersonal.Designer.cs">
+      <DependentUpon>ControlGestiunePersonal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Personal\ControlListaUtilizatori.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Setari\Personal\ControlListaUtilizatori.Designer.cs">
+      <DependentUpon>ControlListaUtilizatori.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Personal\ControlUtilizatorEtape.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Setari\Personal\ControlUtilizatorEtape.Designer.cs">
+      <DependentUpon>ControlUtilizatorEtape.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Personal\ControlUtilizatorPontaj.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Setari\Personal\ControlUtilizatorPontaj.Designer.cs">
+      <DependentUpon>ControlUtilizatorPontaj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Personal\FormDetaliuUtilizator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setari\Personal\FormDetaliuUtilizator.Designer.cs">
+      <DependentUpon>FormDetaliuUtilizator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setari\Personal\FormDosarUtilizator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setari\Personal\FormDosarUtilizator.Designer.cs">
+      <DependentUpon>FormDosarUtilizator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\ControlDetaliuClientComanda.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\ControlDetaliuClientComanda.Designer.cs">
+      <DependentUpon>ControlDetaliuClientComanda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\ControlDetaliuReprezentant.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\ControlDetaliuReprezentant.Designer.cs">
+      <DependentUpon>ControlDetaliuReprezentant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\ControlDosarClientCabinete.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\ControlDosarClientCabinete.Designer.cs">
+      <DependentUpon>ControlDosarClientCabinete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\ControlDosarClientComenzi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\ControlDosarClientComenzi.Designer.cs">
+      <DependentUpon>ControlDosarClientComenzi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\ControlDosarClientListaPreturi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\ControlDosarClientListaPreturi.Designer.cs">
+      <DependentUpon>ControlDosarClientListaPreturi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\ControlDosarClientPlati.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\ControlDosarClientPlati.Designer.cs">
+      <DependentUpon>ControlDosarClientPlati.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\ControlDosarClientReprezentanti.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\ControlDosarClientReprezentanti.Designer.cs">
+      <DependentUpon>ControlDosarClientReprezentanti.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\FormDetaliuCabinet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\FormDetaliuCabinet.Designer.cs">
+      <DependentUpon>FormDetaliuCabinet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\FormDetaliuComanda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\FormDetaliuComanda.Designer.cs">
+      <DependentUpon>FormDetaliuComanda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\FormDetaliuReprezentant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\FormDetaliuReprezentant.Designer.cs">
+      <DependentUpon>FormDetaliuReprezentant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\FormDosarClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\FormDosarClient.Designer.cs">
+      <DependentUpon>FormDosarClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TablouDeBord\Comunicare\ControlDetaliuEmail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TablouDeBord\Comunicare\ControlDetaliuEmail.Designer.cs">
+      <DependentUpon>ControlDetaliuEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TablouDeBord\Comunicare\ControlScrieEmail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TablouDeBord\Comunicare\ControlScrieEmail.Designer.cs">
+      <DependentUpon>ControlScrieEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TablouDeBord\Comunicare\FormAdaugaEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TablouDeBord\Comunicare\FormAdaugaEmail.Designer.cs">
+      <DependentUpon>FormAdaugaEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TablouDeBord\Comunicare\FormDetaliuEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TablouDeBord\Comunicare\FormDetaliuEmail.Designer.cs">
+      <DependentUpon>FormDetaliuEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\ControlDetaliuClient.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\ControlDetaliuClient.Designer.cs">
+      <DependentUpon>ControlDetaliuClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\ControlGestiuneClienti.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\ControlGestiuneClienti.Designer.cs">
+      <DependentUpon>ControlGestiuneClienti.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\ControlListaClienti.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\ControlListaClienti.Designer.cs">
+      <DependentUpon>ControlListaClienti.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TablouDeBord\Comunicare\FormScrieEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TablouDeBord\Comunicare\FormScrieEmail.Designer.cs">
+      <DependentUpon>FormScrieEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TablouDeBord\ControlTablouDeBord.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TablouDeBord\ControlTablouDeBord.Designer.cs">
+      <DependentUpon>ControlTablouDeBord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TablouDeBord\Comunicare\ControlComunicare.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TablouDeBord\Comunicare\ControlComunicare.Designer.cs">
+      <DependentUpon>ControlComunicare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TablouDeBord\Comunicare\ControlInbox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TablouDeBord\Comunicare\ControlInbox.Designer.cs">
+      <DependentUpon>ControlInbox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TablouDeBord\Comunicare\ControlAdaugaEmail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TablouDeBord\Comunicare\ControlAdaugaEmail.Designer.cs">
+      <DependentUpon>ControlAdaugaEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\FormDetaliuClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TablouDeBord\Clienti\FormDetaliuClient.Designer.cs">
+      <DependentUpon>FormDetaliuClient.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Caramizi\ControlCautareLocalitate.resx">
+      <DependentUpon>ControlCautareLocalitate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\ControlCautareRegiune.resx">
+      <DependentUpon>ControlCautareRegiune.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\ControlCautareTara.resx">
+      <DependentUpon>ControlCautareTara.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\controlInchidere.resx">
+      <DependentUpon>controlInchidere.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\ControlPerioada.resx">
+      <DependentUpon>ControlPerioada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\FormSelecteazaDate.resx">
+      <DependentUpon>FormSelecteazaDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\frmAfiseazaRezultatCautareLocalitate.resx">
+      <DependentUpon>frmAfiseazaRezultatCautareLocalitate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\frmAfiseazaRezultatCautareRegiune.resx">
+      <DependentUpon>frmAfiseazaRezultatCautareRegiune.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\frmAfiseazaRezultatCautareTara.resx">
+      <DependentUpon>frmAfiseazaRezultatCautareTara.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EcranPrincipal.resx">
+      <DependentUpon>EcranPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generale\ControlAdresaEmail.resx">
+      <DependentUpon>ControlAdresaEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generale\ControlAdresaISTOMA.resx">
+      <DependentUpon>ControlAdresaISTOMA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generale\ControlCautareProfesie.resx">
+      <DependentUpon>ControlCautareProfesie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generale\ControlCautareRecomandant.resx">
+      <DependentUpon>ControlCautareRecomandant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generale\ControlPauza.resx">
+      <DependentUpon>ControlPauza.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generale\FormAdresaISTOMA.resx">
+      <DependentUpon>FormAdresaISTOMA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generale\FormCheckInOut.resx">
+      <DependentUpon>FormCheckInOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generale\FormExtrageEmailuri.resx">
+      <DependentUpon>FormExtrageEmailuri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generale\FormListaCategorii.resx">
+      <DependentUpon>FormListaCategorii.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generale\FormListaEmail.resx">
+      <DependentUpon>FormListaEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generale\FormInchidereAplicatie.resx">
+      <DependentUpon>FormInchidereAplicatie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generale\FormListaEtape.resx">
+      <DependentUpon>FormListaEtape.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generale\FormListaLucrari.resx">
+      <DependentUpon>FormListaLucrari.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generale\FormListaUtilizatori.resx">
+      <DependentUpon>FormListaUtilizatori.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generale\FormLocatie.resx">
+      <DependentUpon>FormLocatie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generale\FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generale\frmAfiseazaAdresa.resx">
+      <DependentUpon>frmAfiseazaAdresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generale\frmAfiseazaRezultatCautareProfesie.resx">
+      <DependentUpon>frmAfiseazaRezultatCautareProfesie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generale\frmAfiseazaRezultatCautareRecomandant.resx">
+      <DependentUpon>frmAfiseazaRezultatCautareRecomandant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Setari\Liste\Categorii\ControlDetaliiCategorie.resx">
+      <DependentUpon>ControlDetaliiCategorie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Liste\Categorii\ControlListaCategorii.resx">
+      <DependentUpon>ControlListaCategorii.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Liste\Categorii\FormDetaliiCategorie.resx">
+      <DependentUpon>FormDetaliiCategorie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Liste\ListeParametrabile\ControlListaParametrabila.resx">
+      <DependentUpon>ControlListaParametrabila.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Liste\Localitati\ControlAdaugaLocalitate.resx">
+      <DependentUpon>ControlAdaugaLocalitate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Liste\Localitati\ControlDetaliuListaLocalitati.resx">
+      <DependentUpon>ControlDetaliuListaLocalitati.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Liste\Localitati\FormAdaugaLocalitate.resx">
+      <DependentUpon>FormAdaugaLocalitate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Liste\Profesii\ControlAdaugareInListaProfesii.resx">
+      <DependentUpon>ControlAdaugareInListaProfesii.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Liste\Profesii\ControlDetaliuListaProfesii.resx">
+      <DependentUpon>ControlDetaliuListaProfesii.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Liste\ControlGestiuneListe.resx">
+      <DependentUpon>ControlGestiuneListe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Liste\Profesii\FormAdaugareInListaProfesii.resx">
+      <DependentUpon>FormAdaugareInListaProfesii.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Liste\Regiuni\ControlAdaugareRegiune.resx">
+      <DependentUpon>ControlAdaugareRegiune.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Liste\Regiuni\ControlDetaliuListaRegiuni.resx">
+      <DependentUpon>ControlDetaliuListaRegiuni.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Liste\Regiuni\FormAdaugareRegiune.resx">
+      <DependentUpon>FormAdaugareRegiune.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Liste\Tari\ControlAdaugareTara.resx">
+      <DependentUpon>ControlAdaugareTara.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Liste\Tari\ControlDetaliuListaTari.resx">
+      <DependentUpon>ControlDetaliuListaTari.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Liste\Tari\FormAdaugareTara.resx">
+      <DependentUpon>FormAdaugareTara.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Locatii\ControlGestiuneLocatii.resx">
+      <DependentUpon>ControlGestiuneLocatii.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Locatii\ControlListaLocatii.resx">
+      <DependentUpon>ControlListaLocatii.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Locatii\FormDetaliuLocatie.resx">
+      <DependentUpon>FormDetaliuLocatie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Locatii\ControlDetaliuLocatie.resx">
+      <DependentUpon>ControlDetaliuLocatie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Lucrari\ControlDetaliuLucrare.resx">
+      <DependentUpon>ControlDetaliuLucrare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Lucrari\ControlEtape.resx">
+      <DependentUpon>ControlEtape.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Lucrari\ControlGestiuneListaDePreturi.resx">
+      <DependentUpon>ControlGestiuneListaDePreturi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Lucrari\ControlListaDePreturi.resx">
+      <DependentUpon>ControlListaDePreturi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Lucrari\ControlListaDePreturiClienti.resx">
+      <DependentUpon>ControlListaDePreturiClienti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Lucrari\FormAdaugareEtapa.resx">
+      <DependentUpon>FormAdaugareEtapa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Lucrari\FormDetaliuLucrare.resx">
+      <DependentUpon>FormDetaliuLucrare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Personal\ControlDetaliuUtilizator.resx">
+      <DependentUpon>ControlDetaliuUtilizator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Personal\ControlGestiunePersonal.resx">
+      <DependentUpon>ControlGestiunePersonal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Personal\ControlListaUtilizatori.resx">
+      <DependentUpon>ControlListaUtilizatori.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Personal\ControlUtilizatorEtape.resx">
+      <DependentUpon>ControlUtilizatorEtape.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Personal\ControlUtilizatorPontaj.resx">
+      <DependentUpon>ControlUtilizatorPontaj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Personal\FormDetaliuUtilizator.resx">
+      <DependentUpon>FormDetaliuUtilizator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setari\Personal\FormDosarUtilizator.resx">
+      <DependentUpon>FormDosarUtilizator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TablouDeBord\Clienti\ControlDetaliuClientComanda.resx">
+      <DependentUpon>ControlDetaliuClientComanda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TablouDeBord\Clienti\ControlDetaliuReprezentant.resx">
+      <DependentUpon>ControlDetaliuReprezentant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TablouDeBord\Clienti\ControlDosarClientCabinete.resx">
+      <DependentUpon>ControlDosarClientCabinete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TablouDeBord\Clienti\ControlDosarClientComenzi.resx">
+      <DependentUpon>ControlDosarClientComenzi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TablouDeBord\Clienti\ControlDosarClientListaPreturi.resx">
+      <DependentUpon>ControlDosarClientListaPreturi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TablouDeBord\Clienti\ControlDosarClientPlati.resx">
+      <DependentUpon>ControlDosarClientPlati.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TablouDeBord\Clienti\ControlDosarClientReprezentanti.resx">
+      <DependentUpon>ControlDosarClientReprezentanti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TablouDeBord\Clienti\FormDetaliuCabinet.resx">
+      <DependentUpon>FormDetaliuCabinet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TablouDeBord\Clienti\FormDetaliuComanda.resx">
+      <DependentUpon>FormDetaliuComanda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TablouDeBord\Clienti\FormDetaliuReprezentant.resx">
+      <DependentUpon>FormDetaliuReprezentant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TablouDeBord\Clienti\FormDosarClient.resx">
+      <DependentUpon>FormDosarClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TablouDeBord\Comunicare\ControlDetaliuEmail.resx">
+      <DependentUpon>ControlDetaliuEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TablouDeBord\Comunicare\ControlScrieEmail.resx">
+      <DependentUpon>ControlScrieEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TablouDeBord\Comunicare\FormAdaugaEmail.resx">
+      <DependentUpon>FormAdaugaEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TablouDeBord\Comunicare\FormDetaliuEmail.resx">
+      <DependentUpon>FormDetaliuEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TablouDeBord\Clienti\ControlDetaliuClient.resx">
+      <DependentUpon>ControlDetaliuClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TablouDeBord\Clienti\ControlGestiuneClienti.resx">
+      <DependentUpon>ControlGestiuneClienti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TablouDeBord\Clienti\ControlListaClienti.resx">
+      <DependentUpon>ControlListaClienti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TablouDeBord\Comunicare\FormScrieEmail.resx">
+      <DependentUpon>FormScrieEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TablouDeBord\ControlTablouDeBord.resx">
+      <DependentUpon>ControlTablouDeBord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TablouDeBord\Comunicare\ControlComunicare.resx">
+      <DependentUpon>ControlComunicare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TablouDeBord\Comunicare\ControlInbox.resx">
+      <DependentUpon>ControlInbox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TablouDeBord\Comunicare\ControlAdaugaEmail.resx">
+      <DependentUpon>ControlAdaugaEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TablouDeBord\Clienti\FormDetaliuClient.resx">
+      <DependentUpon>FormDetaliuClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Documentatie\GetLista.snippet" />
+    <None Include="Documentatie\RegiuneDGV.snippet" />
+    <None Include="Documentatie\RegiuneDGVCereRefresh.snippet" />
+    <None Include="Documentatie\RegiuniBLL.snippet" />
+    <None Include="Documentatie\RegiuniDAL.snippet" />
+    <None Include="Documentatie\RegiuniFormIHM.snippet" />
+    <None Include="Documentatie\RegiuniIHM.snippet" />
+    <None Include="Documentatie\selectBLL.snippet" />
+    <None Include="Documentatie\selectDAL.snippet" />
+    <None Include="Documentatie\TranzactieIDava.snippet" />
+    <None Include="Documentatie\TryGestiune.snippet" />
+    <None Include="Documentatie\TryGestiuneFinally.snippet" />
+    <None Include="Documentatie\TryMessageBox.snippet" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DLLExterne\BouncyCastle.Crypto.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DLLExterne\MailKit.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DLLExterne\MailKit.xml" />
+    <Content Include="DLLExterne\MimeKit.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DLLExterne\MimeKit.xml" />
+    <Content Include="favicon.ico" />
+    <None Include="Resources\paper-plane1.png" />
+    <None Include="Resources\pencil1.png" />
+    <None Include="Resources\refresh.png" />
+    <None Include="Resources\attachment.png" />
+    <None Include="Resources\tag.png" />
+    <None Include="Resources\contact.png" />
+    <None Include="Resources\star.png" />
+    <None Include="Resources\unread.png" />
+    <None Include="Resources\pin.png" />
+    <None Include="Resources\archive.png" />
+    <None Include="Resources\trash-empty.png" />
+    <None Include="Resources\paper-plane.png" />
+    <None Include="Resources\pencil.png" />
+    <None Include="Resources\inbox.png" />
+    <None Include="Resources\envelope.png" />
+    <None Include="Resources\logo_manual.png" />
+    <None Include="Resources\login_icon.png" />
+    <None Include="Resources\expand.png" />
+    <None Include="Resources\collapse.png" />
+    <None Include="Resources\waiting.gif" />
+    <None Include="Resources\search.png" />
+    <None Include="Resources\recall.png" />
+    <None Include="Resources\ComandaFurnizor.png" />
+    <None Include="Resources\btnOptiuni.png" />
+    <None Include="Resources\btnCautareOrice.png" />
+    <None Include="Resources\BonDeNecesarCabinet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Setari\Diverse\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

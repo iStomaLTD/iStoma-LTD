@@ -1,0 +1,94 @@
+﻿
+--------------creare tabela ClientiFacturi_TD
+
+CREATE TABLE [dbo].[ClientiFacturi_TD](
+	[nId] [int] IDENTITY(1,1) NOT NULL,
+	[xnIdClient] [int] NOT NULL,
+	[dDataFactura] [datetime] NULL,
+	[tSerieFactura] [nvarchar](10) NULL,
+	[nNumarFactura] [int] NULL,
+	[tObservatii] [nvarchar](500) NULL,
+	[nMonedaFactura] [tinyint] NULL,
+	[nCursBNR] [money] NULL,
+	[dDataCreare] [datetime] NULL,
+	[xnUtilizatorCreare] [int] NULL,
+	[dDataInchidere] [datetime] NULL,
+	[xnUtilizatorInchidere] [int] NULL,
+	[tMotivInchidere] [nvarchar](500) NULL,
+ CONSTRAINT [PK_ClientiFacturi_TD] PRIMARY KEY CLUSTERED 
+(
+	[nId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[ClientiFacturi_TD] ADD  CONSTRAINT [DF_ClientiFacturi_TD_dDataCreare]  DEFAULT (getdate()) FOR [dDataCreare]
+GO
+
+
+-----------------creare tabela ClientiPlati_TD
+
+CREATE TABLE [dbo].[ClientiPlati_TD](
+	[nId] [int] IDENTITY(1,1) NOT NULL,
+	[xnIdClient] [int] NOT NULL,
+	[dDataPlata] [datetime] NOT NULL,
+	[nSumaPlatita] [money] NOT NULL,
+	[nModalitatePlata] [tinyint] NOT NULL,
+	[nCursBNR] [money] NULL,
+	[dDataCreare] [datetime] NULL,
+	[xnUtilizatorCreare] [int] NULL,
+	[dDataInchidere] [datetime] NULL,
+	[xnUtilizatorInchidere] [int] NULL,
+	[tMotivInchidere] [nvarchar](500) NULL,
+ CONSTRAINT [PK_ClientiPlati_TD] PRIMARY KEY CLUSTERED 
+(
+	[nId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[ClientiPlati_TD] ADD  CONSTRAINT [DF_ClientiPlati_TD_dDataCreare]  DEFAULT (getdate()) FOR [dDataCreare]
+GO
+
+
+------------creare tabela ClientiPlatiComenzi_TD
+
+CREATE TABLE [dbo].[ClientiPlatiComenzi_TD](
+	[nId] [int] IDENTITY(1,1) NOT NULL,
+	[xnIdClientComanda] [int] NULL,
+	[xnIdClientPlata] [int] NULL,
+	[nValoare] [money] NULL,
+ CONSTRAINT [PK_ClientiPlatiComenzi_TD] PRIMARY KEY CLUSTERED 
+(
+	[nId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+CREATE TABLE [dbo].[ColoaneListeAfisaj_TP](
+	[xnIdLista] [int] NOT NULL,
+	[tColoana] [nvarchar](50) NOT NULL,
+	[nOrdine] [tinyint] NULL,
+	[bVizibila] [bit] NULL,
+	[nLatime] [smallint] NULL
+) ON [PRIMARY]
+
+
+CREATE TABLE [dbo].[ListeAfisaj_TP](
+	[nId] [smallint] IDENTITY(1,1) NOT NULL,
+	[tDenumireLista] [nvarchar](250) NOT NULL,
+	[tColoanaSortare] [nvarchar](50) NULL,
+	[nOrdineSortare] [bit] NULL,
+ CONSTRAINT [PK_ListeAfisaj_TP] PRIMARY KEY CLUSTERED 
+(
+	[nId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 80) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+---------------adaugare coloane
+
+alter table dbo.ClientiComenzi_TD add bAcceptata bit
+

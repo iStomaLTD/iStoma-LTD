@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Regiunile unei clase IHM standard</Title>
+      <Shortcut>RegiuniFormIHM</Shortcut>
+      <Description>
+        Code snippet pentru a genera regiunile standard ale unui formular.
+      </Description>
+      <Author>iDava</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>   
+    <Snippet>
+      <Declarations>
+		<Literal Editable="false">
+          <ID>NumeClasa</ID>
+          <Function>
+            ClassName()
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[		
+        #region Declaratii generale
+
+				
+        #endregion
+
+        #region Enumerari si Structuri
+
+		
+		
+        #endregion
+
+        #region Proprietati
+
+		
+		
+        #endregion
+
+        #region Constructor si Initializare
+				
+        private $NumeClasa$()
+        {
+			this.DoubleBuffered = true;
+            InitializeComponent();
+			
+			if (!CCL.UI.IHMUtile.SuntemInDebug())
+            {
+				adaugaHandlere();
+                initTextML();
+				
+				this.CentratCuDeplasare();
+            }
+        }
+		
+		private void adaugaHandlere()
+        {
+            this.Load += $NumeClasa$_Load;
+        }
+		
+		private void initTextML()
+        {
+			this.Text = string.Empty;
+        }
+
+		void $NumeClasa$_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                Initializeaza();
+				AllowModification(true);
+            }
+            catch (Exception ex)
+            {
+                GestiuneErori.AfiseazaMesaj(this.GetFormParinte(), ex);
+            }
+        }
+		
+        public void Initializeaza()
+        {
+            base.InitializeazaVariabileleGenerale();
+
+            incepeIncarcarea();
+			//TODO			
+            finalizeazaIncarcarea();
+        }
+		
+        #endregion
+
+        #region Evenimente
+		
+		
+		
+        #endregion
+
+        #region Metode private
+
+		
+		
+        #endregion
+
+        #region Metode publice
+
+		public static bool Afiseaza(Form pEcranPariente)
+        {
+            using ($NumeClasa$ ecran = new $NumeClasa$())
+            {
+                ecran.AplicaPreferinteleUtilizatorului();
+                return CCL.UI.IHMUtile.DeschideEcran(pEcranPariente,ecran);
+            }
+        }
+		
+        #endregion
+
+        #region IControlDava Members
+
+        public void AllowModification(bool pPermiteModificarea)
+        {
+            this.lEcranInModificare = pPermiteModificarea;
+        }
+
+        #endregion
+		
+       ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

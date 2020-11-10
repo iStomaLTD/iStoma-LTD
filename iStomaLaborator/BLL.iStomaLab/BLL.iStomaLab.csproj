@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8448EAF7-D919-4CEF-A0AA-2342258763E2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BLL.iStomaLab</RootNamespace>
+    <AssemblyName>BLL.iStomaLab</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\DLL\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Management.Instrumentation" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BDefinitiiGenerale.cs" />
+    <Compile Include="BGeneral.cs" />
+    <Compile Include="BGestiuneCMI.cs" />
+    <Compile Include="BMasina.cs" />
+    <Compile Include="BMultiLingv.cs" />
+    <Compile Include="Clienti\BClienti.cs" />
+    <Compile Include="Clienti\BClientiCabinete.cs" />
+    <Compile Include="Clienti\BClientiComenzi.cs" />
+    <Compile Include="Clienti\BClientiComenziEtape.cs" />
+    <Compile Include="Clienti\BClientiFacturi.cs" />
+    <Compile Include="Clienti\BClientiPlati.cs" />
+    <Compile Include="Clienti\BClientiPlatiComenzi.cs" />
+    <Compile Include="Clienti\BColectieClienti.cs" />
+    <Compile Include="Clienti\BColectieClientiCabinete.cs" />
+    <Compile Include="Clienti\BColectieClientiComenzi.cs" />
+    <Compile Include="Clienti\BColectieClientiComenziEtape.cs" />
+    <Compile Include="Clienti\BColectieClientiFacturi.cs" />
+    <Compile Include="Clienti\BColectieClientiPlati.cs" />
+    <Compile Include="Clienti\BColectieClientiPlatiComenzi.cs" />
+    <Compile Include="Comune\BColectieColoaneListeAfisaj.cs" />
+    <Compile Include="Comune\BColectieComportamentAplicatie.cs" />
+    <Compile Include="Comune\BColectieDocumenteInline.cs" />
+    <Compile Include="Comune\BColectieListeAfisaj.cs" />
+    <Compile Include="Comune\BColoaneListeAfisaj.cs" />
+    <Compile Include="Comune\BComportamentAplicatie.cs" />
+    <Compile Include="Comune\BDocumenteInline.cs" />
+    <Compile Include="Comune\BListeAfisaj.cs" />
+    <Compile Include="Comune\Versiuni.cs" />
+    <Compile Include="Email\BColectieEmail.cs" />
+    <Compile Include="Email\BColectieEmailuriExtrase.cs" />
+    <Compile Include="Email\BEmail.cs" />
+    <Compile Include="Email\BEmailuriExtrase.cs" />
+    <Compile Include="Locatii\BColectieLocatii.cs" />
+    <Compile Include="Comune\BAdrese.cs" />
+    <Compile Include="Comune\BColectieAdrese.cs" />
+    <Compile Include="Locatii\BLocatii.cs" />
+    <Compile Include="Preturi\BColectieEtape.cs" />
+    <Compile Include="Preturi\BColectieListaPreturiClienti.cs" />
+    <Compile Include="Preturi\BColectieListaPreturiStandard.cs" />
+    <Compile Include="Preturi\BColectieLucrariEtape.cs" />
+    <Compile Include="Preturi\BEtape.cs" />
+    <Compile Include="Preturi\BListaPreturiClienti.cs" />
+    <Compile Include="Preturi\BListaPreturiStandard.cs" />
+    <Compile Include="Preturi\BLucrariEtape.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Referinta\BBanci.cs" />
+    <Compile Include="Referinta\BCategorii.cs" />
+    <Compile Include="Referinta\BColectieBanci.cs" />
+    <Compile Include="Referinta\BColectieCategorii.cs" />
+    <Compile Include="Referinta\BColectieListeParametrabile.cs" />
+    <Compile Include="Referinta\BColectieLocalitati.cs" />
+    <Compile Include="Referinta\BColectieProfesii.cs" />
+    <Compile Include="Referinta\BColectieRegiuni.cs" />
+    <Compile Include="Referinta\BColectieTari.cs" />
+    <Compile Include="Referinta\BListeParametrabile.cs" />
+    <Compile Include="Referinta\BLocalitati.cs" />
+    <Compile Include="Referinta\BProfesii.cs" />
+    <Compile Include="Referinta\BRegiuni.cs" />
+    <Compile Include="Referinta\BTari.cs" />
+    <Compile Include="Clienti\BColectieClientiReprezentanti.cs" />
+    <Compile Include="Clienti\BClientiReprezentanti.cs" />
+    <Compile Include="Utilizatori\BColectiePontaj.cs" />
+    <Compile Include="Utilizatori\BColectieStatiiDeLucru.cs" />
+    <Compile Include="Utilizatori\BColectieStatiiDeLucruUtilizatori.cs" />
+    <Compile Include="Utilizatori\BColectieUtilizator.cs" />
+    <Compile Include="Utilizatori\BColectieUtilizatorDrepturi.cs" />
+    <Compile Include="Utilizatori\BColectieUtilizatoriVenituri.cs" />
+    <Compile Include="Utilizatori\BColectieUtilizatoriVenituriDetalii.cs" />
+    <Compile Include="Utilizatori\BColectieUtilizatorLucrariEtape.cs" />
+    <Compile Include="Utilizatori\BPontaj.cs" />
+    <Compile Include="Utilizatori\BStatiiDeLucru.cs" />
+    <Compile Include="Utilizatori\BStatiiDeLucruUtilizatori.cs" />
+    <Compile Include="Utilizatori\BUtilizator.cs" />
+    <Compile Include="Utilizatori\BUtilizatorDrepturi.cs" />
+    <Compile Include="Utilizatori\BUtilizatoriVenituri.cs" />
+    <Compile Include="Utilizatori\BUtilizatoriVenituriDetalii.cs" />
+    <Compile Include="Utilizatori\BUtilizatorLucrariEtape.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CCL.DAL\CCL.DAL.csproj">
+      <Project>{95166b71-81fd-4b8c-a8ab-492871b3610f}</Project>
+      <Name>CCL.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CCL.iStomaLab\CCL.iStomaLab.csproj">
+      <Project>{a8d30ab3-4493-4f13-935d-5b9f625e9527}</Project>
+      <Name>CCL.iStomaLab</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CDL.iStomaLab\CDL.iStomaLab.csproj">
+      <Project>{0ccbe6ac-a3a8-4bda-a345-d496cff03fc9}</Project>
+      <Name>CDL.iStomaLab</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL.iStomaLab\DAL.iStomaLab.csproj">
+      <Project>{754dd768-c8d3-40ac-a945-942562bc0205}</Project>
+      <Name>DAL.iStomaLab</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ILL.General\ILL.BLL.General.csproj">
+      <Project>{45d7b893-ab7b-4dc3-8249-06e94a4ad333}</Project>
+      <Name>ILL.BLL.General</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ILL.iStomaLab\ILL.iStomaLab.csproj">
+      <Project>{ff4630ba-08c6-40aa-962e-69dfd97803c1}</Project>
+      <Name>ILL.iStomaLab</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,1057 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{961B4843-8504-4DFE-BA7F-0A3497BC1F87}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CCL.UI</RootNamespace>
+    <AssemblyName>CCL.UI</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>iStoma.snk</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\DLL\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\DLL\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CarlosAg.ExcelXmlWriter, Version=1.0.0.6, Culture=neutral">
+      <HintPath>..\packages\CarlosAgExcelXmlWriterLibrary.1.0.0\lib\net40\CarlosAg.ExcelXmlWriter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="Zen.Barcode.Core, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b5ae55aa76d2d9de, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zen.Barcode.Rendering.Framework.3.1.10729.1\lib\Zen.Barcode.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Caramizi\controlDaNu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\controlDaNu.Designer.cs">
+      <DependentUpon>controlDaNu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\controlGestiuneCuloare.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\controlGestiuneCuloare.Designer.cs">
+      <DependentUpon>controlGestiuneCuloare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\controlGestiuneText.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Caramizi\controlGestiuneText.Designer.cs">
+      <DependentUpon>controlGestiuneText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\ControlGraficEvolutie.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\controlImagineAtasata.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Caramizi\controlImagineAtasata.Designer.cs">
+      <DependentUpon>controlImagineAtasata.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\ControlInterval.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\ControlInterval.Designer.cs">
+      <DependentUpon>ControlInterval.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\ControlIntervalOrar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\ControlIntervalOrar.Designer.cs">
+      <DependentUpon>ControlIntervalOrar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\ControlLegendaImagini.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Caramizi\ControlLegendaImagini.Designer.cs">
+      <DependentUpon>ControlLegendaImagini.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\controlLeiEuro.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\controlLeiEuro.Designer.cs">
+      <DependentUpon>controlLeiEuro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\ControlNumarLuni.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\ControlNumarLuni.Designer.cs">
+      <DependentUpon>ControlNumarLuni.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\ControlPaginatie.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Caramizi\ControlPaginatie.Designer.cs">
+      <DependentUpon>ControlPaginatie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\ControlPerioada.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\ControlPerioada.Designer.cs">
+      <DependentUpon>ControlPerioada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\ControlSelectieAn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\ControlSelectieAn.Designer.cs">
+      <DependentUpon>ControlSelectieAn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\ControlSMS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Caramizi\ControlSMS.Designer.cs">
+      <DependentUpon>ControlSMS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\ControlStangaDreapta.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Caramizi\ControlStangaDreapta.Designer.cs">
+      <DependentUpon>ControlStangaDreapta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\ControlTextPlusMinus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Caramizi\ControlTextPlusMinus.Designer.cs">
+      <DependentUpon>ControlTextPlusMinus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\controlValidareAnulare.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Caramizi\controlValidareAnulare.Designer.cs">
+      <DependentUpon>controlValidareAnulare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\controlValoareMonetara.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Caramizi\controlValoareMonetara.Designer.cs">
+      <DependentUpon>controlValoareMonetara.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\ComboBoxAutocompleteGuma.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\ComboBoxAutocompleteGuma.Designer.cs">
+      <DependentUpon>ComboBoxAutocompleteGuma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\ControlZileSaptamana.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\ControlZileSaptamana.Designer.cs">
+      <DependentUpon>ControlZileSaptamana.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\HTML\EnterHrefForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Caramizi\HTML\FindReplaceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Caramizi\HTML\FontAttributeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Caramizi\HTML\HtmlEditorEvents.cs" />
+    <Compile Include="Caramizi\HTML\HtmlEnumerations.cs" />
+    <Compile Include="Caramizi\HTML\HtmlFontProperty.cs" />
+    <Compile Include="Caramizi\HTML\HtmlTableProperty.cs" />
+    <Compile Include="Caramizi\HTML\TablePropertyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Caramizi\PanelContainerCCL.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\TextBoxCautare.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\TextBoxCautare.Designer.cs">
+      <DependentUpon>TextBoxCautare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\TextBoxCuEticheta.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\TextBoxGumaFind.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\TextBoxGumaFind.Designer.cs">
+      <DependentUpon>TextBoxGumaFind.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\UserControlComun.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CExportaCSV.cs" />
+    <Compile Include="CExportExcel.cs" />
+    <Compile Include="ControalePersonalizate\ButtonPersonalizat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\ComboBoxGuma.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\ComboBoxGuma.Designer.cs">
+      <DependentUpon>ComboBoxGuma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\ControlDurataSaptamaniZileOreMinute.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\ControlDurataSaptamaniZileOreMinute.Designer.cs">
+      <DependentUpon>ControlDurataSaptamaniZileOreMinute.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\HTML\ControlEditorHTML.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Caramizi\HTML\ControlEditorHTML.Designer.cs">
+      <DependentUpon>ControlEditorHTML.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\LabelGumaFind.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\LabelGumaFind.Designer.cs">
+      <DependentUpon>LabelGumaFind.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\MaskedTextBoxGuma.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\MaskedTextBoxGuma.Designer.cs">
+      <DependentUpon>MaskedTextBoxGuma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\TextBoxGuma.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\TextBoxGuma.Designer.cs">
+      <DependentUpon>TextBoxGuma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CEnumerariComune.cs" />
+    <Compile Include="CEvenimente.cs" />
+    <Compile Include="ControalePersonalizate\CheckBoxPersonalizat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControalePersonalizate\ComboBoxAutocomplete.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControalePersonalizate\DGV\DataGridViewExport.cs" />
+    <Compile Include="ControalePersonalizate\DGV\DataGridViewMultiTypeCell.cs" />
+    <Compile Include="ControalePersonalizate\DGV\DataGridViewMultiTypeColumn.cs" />
+    <Compile Include="ControalePersonalizate\GroupBoxPersonalizat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControalePersonalizate\LabelChenar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControalePersonalizate\ListViewPersonalizat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControalePersonalizate\NumericUpDownPersonalizat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControalePersonalizate\PictureCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControalePersonalizate\TimerPersonalizat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControalePersonalizate\ToolStripButtonRenderer.cs" />
+    <Compile Include="ControalePersonalizate\ToolStripPersonalizat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControalePersonalizate\WebBrowserJS.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControaleSpecializate\ButonInchidePanelOptiuni.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControaleSpecializate\ButonMaiMulte.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControaleSpecializate\ButonOptiunePanelOptiuni.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControaleSpecializate\ComboBoxOra.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControaleCreateDinamic.cs" />
+    <Compile Include="ControaleSpecializate\ComboBoxNumeric.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControalePersonalizate\ComboBoxPersonalizat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\controlAlegeData.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\controlAlegeData.Designer.cs">
+      <DependentUpon>controlAlegeData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\ControlDataOraGuma.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\ControlDataOraGuma.Designer.cs">
+      <DependentUpon>ControlDataOraGuma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Caramizi\ControlGestiuneNumarOrdine.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Caramizi\ControlGestiuneNumarOrdine.Designer.cs">
+      <DependentUpon>ControlGestiuneNumarOrdine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControaleSpecializate\ControlLabelParam.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControalePersonalizate\DGV\DatagridViewCheckBoxHeaderCell.cs" />
+    <Compile Include="ControalePersonalizate\DGV\DataGridViewDisableCheckBoxCell.cs" />
+    <Compile Include="ControalePersonalizate\DGV\DataGridViewDisableCheckBoxColumn.cs" />
+    <Compile Include="ControalePersonalizate\DGV\DataGridViewImageButtonCell.cs" />
+    <Compile Include="ControalePersonalizate\DGV\DataGridViewImageButtonColumn.cs" />
+    <Compile Include="ControalePersonalizate\DGV\DataGridViewPersonalizat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControalePersonalizate\FlowLayoutPanelPersonalizat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControaleSpecializate\LabelClickable.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControaleSpecializate\PanelImagineCuTransparenta.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControaleSpecializate\PanelOptiuni.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControaleSpecializate\PanelTabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControaleSpecializate\PictureBoxCalendarLunar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControaleSpecializate\PictureBoxPreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControaleSpecializate\TextBoxHint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControaleSpecializate\TextBoxHint.Designer.cs">
+      <DependentUpon>TextBoxHint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControaleSpecializate\WebBrowserEditabil.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControaleSpecializate\WebBrowserJS.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControalePersonalizate\DGV\DataGridViewPrinter.cs" />
+    <Compile Include="DreptunghiRotunjit.cs" />
+    <Compile Include="FormulareComune\FormContinutFisierText.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulareComune\FormContinutFisierText.Designer.cs">
+      <DependentUpon>FormContinutFisierText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormulareComune\frmAfisareControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulareComune\frmAfisareControl.Designer.cs">
+      <DependentUpon>frmAfisareControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormulareComune\frmAfiseazaControlCuValidare.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulareComune\frmAfiseazaControlCuValidare.Designer.cs">
+      <DependentUpon>frmAfiseazaControlCuValidare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormulareComune\frmAfiseazaImagine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulareComune\frmAfiseazaImagine.Designer.cs">
+      <DependentUpon>frmAfiseazaImagine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormulareComune\frmAjustarePret.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulareComune\frmAjustarePret.Designer.cs">
+      <DependentUpon>frmAjustarePret.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormulareComune\frmCalculator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulareComune\frmCalculator.Designer.cs">
+      <DependentUpon>frmCalculator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormulareComune\frmCautare.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulareComune\frmCautare.Designer.cs">
+      <DependentUpon>frmCautare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormulareComune\frmControlBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulareComune\frmControlBox.Designer.cs">
+      <DependentUpon>frmControlBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormulareComune\frmCuChenar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulareComune\frmCuChenar.Designer.cs">
+      <DependentUpon>frmCuChenar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormulareComune\frmCuHeader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulareComune\frmCuHeader.Designer.cs">
+      <DependentUpon>frmCuHeader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormulareComune\frmCuHeaderSiValidare.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulareComune\frmCuHeaderSiValidare.Designer.cs">
+      <DependentUpon>frmCuHeaderSiValidare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormulareComune\frmCuloriSemnificatie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulareComune\frmCuloriSemnificatie.Designer.cs">
+      <DependentUpon>frmCuloriSemnificatie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormulareComune\frmGazdaControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulareComune\frmInputBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulareComune\frmInputBox.Designer.cs">
+      <DependentUpon>frmInputBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormulareComune\frmMesajPersonalizat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulareComune\frmMesajPersonalizat.Designer.cs">
+      <DependentUpon>frmMesajPersonalizat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormulareComune\frmSimplu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulareComune\frmSimplu.Designer.cs">
+      <DependentUpon>frmSimplu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormulareComune\frmToolTip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulareComune\frmToolTip.Designer.cs">
+      <DependentUpon>frmToolTip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormulareComune\frmToolTipEditabil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulareComune\frmToolTipEditabil.Designer.cs">
+      <DependentUpon>frmToolTipEditabil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormulareComune\frmWebBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulareComune\frmWebBrowser.Designer.cs">
+      <DependentUpon>frmWebBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IHMEfecteSpeciale.cs" />
+    <Compile Include="IHMStilAplicatie.cs" />
+    <Compile Include="IHMUtile.cs" />
+    <Compile Include="Imagini.cs" />
+    <Compile Include="IMembriComuniControalePersonalizate.cs" />
+    <Compile Include="ControalePersonalizate\LabelPersonalizat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControalePersonalizate\LinkLabelPersonalizat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControalePersonalizate\ListBoxPersonalizat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControalePersonalizate\MaskedTextBoxPersonalizat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControalePersonalizate\MenuStripPersonalizat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControalePersonalizate\PanelPersonalizat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControalePersonalizate\PictureBoxPersonalizat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Imprimare\CImprimaBarCode.cs" />
+    <Compile Include="Interfete\IGestiuneEvenimenteWebBrowser.cs" />
+    <Compile Include="Mesaj.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ControalePersonalizate\RadioButtonPersonalizat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControalePersonalizate\RichTextBoxPersonalizat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControalePersonalizate\SplitContainerPersonalizat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControalePersonalizate\TableLayoutPanelPersonalizat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControalePersonalizate\TextBoxPersonalizat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControalePersonalizate\TreeViewPersonalizat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControalePersonalizate\WebBrowserPersonalizat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Render\ToolStripSeparatorRenderer.cs" />
+    <Compile Include="Sunete.cs" />
+    <Compile Include="ControalePersonalizate\TGV\TreeGridCell.cs" />
+    <Compile Include="ControalePersonalizate\TGV\TreeGridEvents.cs" />
+    <Compile Include="ControalePersonalizate\TGV\TreeGridNode.cs" />
+    <Compile Include="ControalePersonalizate\TGV\TreeGridNodeCollection.cs" />
+    <Compile Include="ControalePersonalizate\TGV\TreeGridView.cs" />
+    <Compile Include="Tools.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Caramizi\ComboBoxGuma.resx">
+      <DependentUpon>ComboBoxGuma.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\controlDaNu.resx">
+      <DependentUpon>controlDaNu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\ControlDataOraGuma.resx">
+      <DependentUpon>ControlDataOraGuma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\ControlDurataSaptamaniZileOreMinute.resx">
+      <DependentUpon>ControlDurataSaptamaniZileOreMinute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\controlGestiuneCuloare.resx">
+      <DependentUpon>controlGestiuneCuloare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\controlGestiuneText.resx">
+      <DependentUpon>controlGestiuneText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\controlImagineAtasata.resx">
+      <DependentUpon>controlImagineAtasata.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\ControlInterval.resx">
+      <DependentUpon>ControlInterval.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\ControlIntervalOrar.resx">
+      <DependentUpon>ControlIntervalOrar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\ControlLegendaImagini.resx">
+      <DependentUpon>ControlLegendaImagini.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\controlLeiEuro.resx">
+      <DependentUpon>controlLeiEuro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\ControlNumarLuni.resx">
+      <DependentUpon>ControlNumarLuni.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\ControlPaginatie.resx">
+      <DependentUpon>ControlPaginatie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\ControlPerioada.resx">
+      <DependentUpon>ControlPerioada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\ControlSelectieAn.resx">
+      <DependentUpon>ControlSelectieAn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\ControlSMS.resx">
+      <DependentUpon>ControlSMS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\ControlStangaDreapta.resx">
+      <DependentUpon>ControlStangaDreapta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\ControlTextPlusMinus.resx">
+      <DependentUpon>ControlTextPlusMinus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\controlValidareAnulare.resx">
+      <DependentUpon>controlValidareAnulare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\controlValoareMonetara.resx">
+      <DependentUpon>controlValoareMonetara.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\ComboBoxAutocompleteGuma.resx">
+      <DependentUpon>ComboBoxAutocompleteGuma.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\ControlZileSaptamana.resx">
+      <DependentUpon>ControlZileSaptamana.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\HTML\ControlEditorHTML.resx">
+      <DependentUpon>ControlEditorHTML.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\HTML\EnterHrefForm.resx" />
+    <EmbeddedResource Include="Caramizi\HTML\FindReplaceForm.resx" />
+    <EmbeddedResource Include="Caramizi\HTML\FontAttributeForm.resx" />
+    <EmbeddedResource Include="Caramizi\HTML\TablePropertyForm.resx" />
+    <EmbeddedResource Include="Caramizi\LabelGumaFind.resx">
+      <DependentUpon>LabelGumaFind.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\MaskedTextBoxGuma.resx">
+      <DependentUpon>MaskedTextBoxGuma.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\TextBoxCautare.resx">
+      <DependentUpon>TextBoxCautare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\TextBoxGuma.resx">
+      <DependentUpon>TextBoxGuma.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\controlAlegeData.resx">
+      <DependentUpon>controlAlegeData.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\ControlGestiuneNumarOrdine.resx">
+      <DependentUpon>ControlGestiuneNumarOrdine.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caramizi\TextBoxGumaFind.resx">
+      <DependentUpon>TextBoxGumaFind.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControaleSpecializate\PictureBoxCalendarLunar.resx">
+      <DependentUpon>PictureBoxCalendarLunar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControaleSpecializate\PictureBoxPreview.resx">
+      <DependentUpon>PictureBoxPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulareComune\FormContinutFisierText.resx">
+      <DependentUpon>FormContinutFisierText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulareComune\frmAfisareControl.resx">
+      <DependentUpon>frmAfisareControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulareComune\frmAfiseazaControlCuValidare.resx">
+      <DependentUpon>frmAfiseazaControlCuValidare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulareComune\frmAfiseazaImagine.resx">
+      <DependentUpon>frmAfiseazaImagine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulareComune\frmAjustarePret.resx">
+      <DependentUpon>frmAjustarePret.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulareComune\frmCalculator.resx">
+      <DependentUpon>frmCalculator.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulareComune\frmCautare.resx">
+      <DependentUpon>frmCautare.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulareComune\frmControlBox.resx">
+      <DependentUpon>frmControlBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulareComune\frmCuChenar.resx">
+      <DependentUpon>frmCuChenar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulareComune\frmCuHeader.resx">
+      <DependentUpon>frmCuHeader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulareComune\frmCuHeaderSiValidare.resx">
+      <DependentUpon>frmCuHeaderSiValidare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulareComune\frmCuloriSemnificatie.resx">
+      <DependentUpon>frmCuloriSemnificatie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulareComune\frmGazdaControl.resx">
+      <DependentUpon>frmGazdaControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulareComune\frmInputBox.resx">
+      <DependentUpon>frmInputBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulareComune\frmMesajPersonalizat.resx">
+      <DependentUpon>frmMesajPersonalizat.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulareComune\frmSimplu.resx">
+      <DependentUpon>frmSimplu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulareComune\frmToolTip.resx">
+      <DependentUpon>frmToolTip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulareComune\frmToolTipEditabil.resx">
+      <DependentUpon>frmToolTipEditabil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulareComune\frmWebBrowser.resx">
+      <DependentUpon>frmWebBrowser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="iStoma.snk" />
+    <None Include="packages.config" />
+    <None Include="Resources\date_picker1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendar_plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EraserIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eraser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_thumbsup.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_thumbsdown.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paper_text_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paper_text_pencil_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_down_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_left_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_right_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_up_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\validate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sort_incr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToolTip16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GoogleLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WikipediaLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ExportCSV.png" />
+    <None Include="Resources\Alerta16.png" />
+    <None Include="Resources\calculator2.png" />
+    <None Include="Resources\menu.png" />
+    <None Include="Resources\refresh.png" />
+    <None Include="Resources\Text_paste.png" />
+    <None Include="Resources\Text_erase.png" />
+    <None Include="Resources\Text_cut.png" />
+    <None Include="Resources\Text_copy.png" />
+    <None Include="Resources\numbered-list.png" />
+    <None Include="Resources\horizontal_line-25.png" />
+    <None Include="Resources\outdent-25.png" />
+    <None Include="Resources\indent-25.png" />
+    <None Include="Resources\redo-26.png" />
+    <None Include="Resources\undo-26.png" />
+    <None Include="Resources\grid-26.png" />
+    <None Include="Resources\list-26.png" />
+    <None Include="Resources\attach-26.png" />
+    <None Include="Resources\screenshot-26.png" />
+    <None Include="Resources\decrease_font-26.png" />
+    <None Include="Resources\increase_font-26.png" />
+    <None Include="Resources\align_justify-26.png" />
+    <None Include="Resources\align_right-26.png" />
+    <None Include="Resources\align_center-26.png" />
+    <None Include="Resources\align_left-26.png" />
+    <None Include="Resources\generic_text-26.png" />
+    <None Include="Resources\text_color-26.png" />
+    <None Include="Resources\bg_color-26.png" />
+    <None Include="Resources\eraser-26.png" />
+    <None Include="Resources\strikethrough-26.png" />
+    <None Include="Resources\underline-26.png" />
+    <None Include="Resources\italic-26.png" />
+    <None Include="Resources\bold-26.png" />
+    <None Include="Resources\cut-26.png" />
+    <None Include="Resources\copy-26.png" />
+    <None Include="Resources\paste-26.png" />
+    <None Include="Resources\html-26.png" />
+    <None Include="Resources\zoomOut.png" />
+    <None Include="Resources\zoomIn.png" />
+    <None Include="Resources\btn_asc_sort.gif" />
+    <None Include="Resources\zoom_out.png" />
+    <None Include="Resources\zoom_in.png" />
+    <None Include="Resources\sort.png" />
+    <None Include="Resources\Text_save.png" />
+    <None Include="Resources\deleteGri2.gif" />
+    <None Include="Resources\google16.png" />
+    <None Include="Resources\calendarIcon.png" />
+    <None Include="Resources\Actions-object-flip-horizontal-icon.png" />
+    <None Include="Resources\Invert.png" />
+    <None Include="Resources\brightness_contrast.png" />
+    <None Include="Resources\shape_rotate_anticlockwise.png" />
+    <None Include="Resources\AfisareLista.png" />
+    <None Include="Resources\Ultimul.gif" />
+    <None Include="Resources\Primul.gif" />
+    <None Include="Resources\istoricModificari.png" />
+    <None Include="Resources\email.png" />
+    <None Include="Resources\ic_informations.png" />
+    <None Include="Resources\MyDocuments16Verde.png" />
+    <None Include="Resources\OpenDocument16.png" />
+    <None Include="Resources\MyDocuments16.png" />
+    <None Include="Resources\ModModificare24.png" />
+    <None Include="Resources\ModCitire24.png" />
+    <None Include="Resources\edit16x16.png" />
+    <None Include="Resources\plus.png" />
+    <None Include="Resources\settings.png" />
+    <None Include="Resources\Adauga.png" />
+    <None Include="Resources\adaugaImagine.png" />
+    <None Include="Resources\printer.png" />
+    <None Include="Resources\find.png" />
+    <None Include="Resources\Cauta25.png" />
+    <None Include="Resources\lupaCautare.png" />
+    <None Include="Resources\zoom-out.png" />
+    <None Include="Resources\zoom-in.png" />
+    <None Include="Resources\help.png" />
+    <None Include="Resources\Sus24.png" />
+    <None Include="Resources\Jos24.png" />
+    <None Include="Resources\sageataJos.png" />
+    <None Include="Resources\Stanga24.png" />
+    <None Include="Resources\Dreapta24.png" />
+    <None Include="Resources\Inapoi.png" />
+    <None Include="Resources\Inainte.png" />
+    <None Include="Resources\asterisk_orange.png" />
+    <None Include="Resources\asterisk_yellow.png" />
+    <None Include="Resources\arrow_right.png" />
+    <None Include="Resources\arrow_rotate_clockwise.png" />
+    <None Include="Resources\arrow_rotate_anticlockwise.png" />
+    <None Include="Resources\Stop.png" />
+    <EmbeddedResource Include="Resources\MesajNou.wav" />
+    <EmbeddedResource Include="Resources\LogoutChat.wav" />
+    <EmbeddedResource Include="Resources\LoginChat.wav" />
+    <None Include="Resources\infoInexistenta.png" />
+    <None Include="Resources\folder_add.png" />
+    <None Include="Resources\html.png" />
+    <None Include="Resources\ToolTipChenar.png" />
+    <None Include="Resources\minus.png" />
+    <None Include="Resources\istoric.gif" />
+    <None Include="Resources\calculator_link.png" />
+    <None Include="Resources\informatii.png" />
+    <None Include="Resources\ImagineVida.png" />
+    <None Include="Resources\VirtualEarth.html" />
+    <None Include="Resources\imagineVida16.png" />
+    <None Include="Resources\email_in.png" />
+    <None Include="Resources\idMess.gif" />
+    <None Include="Resources\YMonline.gif" />
+    <None Include="Resources\YMoffline.gif" />
+    <None Include="Resources\important22.png" />
+    <None Include="Resources\ic-informations.png" />
+    <None Include="Resources\alert_24x24.png" />
+    <None Include="Resources\iD.png" />
+    <None Include="Resources\OpenDocument16.gif" />
+    <None Include="Resources\email_go.png" />
+    <None Include="Resources\icoFacebook.png" />
+    <None Include="Resources\text_superscript.png" />
+    <None Include="Resources\text_subscript.png" />
+    <None Include="Resources\text_strikethrough.png" />
+    <None Include="Resources\zoom.png" />
+    <None Include="Resources\text_indent_remove.png" />
+    <None Include="Resources\text_indent.png" />
+    <None Include="Resources\font.png" />
+    <None Include="Resources\StilAplicatie.css" />
+    <None Include="Resources\jqueryui.txt" />
+    <None Include="Resources\jquery.txt" />
+    <None Include="Resources\FunctiiStandard.js" />
+    <None Include="Resources\ok.png" />
+    <None Include="Resources\no.png" />
+    <None Include="Resources\Text_increase.gif" />
+    <None Include="Resources\Text_decrease.gif" />
+    <None Include="Resources\Text_table.png" />
+    <None Include="Resources\Text_replace.png" />
+    <None Include="Resources\Text_link.png" />
+    <None Include="Resources\Text_hr.gif" />
+    <None Include="Resources\Text_undo.png" />
+    <None Include="Resources\Text_redo.png" />
+    <None Include="Resources\Text_left.png" />
+    <None Include="Resources\Text_align_right.gif" />
+    <None Include="Resources\Text_align_left.gif" />
+    <None Include="Resources\Text_align_justify.gif" />
+    <None Include="Resources\Text_align_center.gif" />
+    <None Include="Resources\Text_list_num.gif" />
+    <None Include="Resources\Text_list_bullet.gif" />
+    <None Include="Resources\Text_color_fg.gif" />
+    <None Include="Resources\Text_color_bg.gif" />
+    <None Include="Resources\Text_format_underline.gif" />
+    <None Include="Resources\Text_format_italic.gif" />
+    <None Include="Resources\Text_format_bold.gif" />
+    <None Include="Resources\AfisareLista.gif" />
+    <None Include="Resources\Ultimul.png" />
+    <None Include="Resources\Primul.png" />
+    <None Include="Resources\sageata_jos.png" />
+    <None Include="Resources\RomaniaMare16.jpg" />
+    <None Include="Resources\RomaniaIcon.png" />
+    <None Include="Resources\delete_icon.gif" />
+    <None Include="Resources\find32.png" />
+    <None Include="Resources\btnCauta.ico" />
+    <None Include="Resources\edit_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="SHDocVw">
+      <Guid>{EAB22AC0-30C1-11CF-A7EB-0000C05BAE0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Harti\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CCL.iStomaLab\CCL.iStomaLab.csproj">
+      <Project>{a8d30ab3-4493-4f13-935d-5b9f625e9527}</Project>
+      <Name>CCL.iStomaLab</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CDL.iStomaLab\CDL.iStomaLab.csproj">
+      <Project>{0ccbe6ac-a3a8-4bda-a345-d496cff03fc9}</Project>
+      <Name>CDL.iStomaLab</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ILL.General\ILL.BLL.General.csproj">
+      <Project>{45d7b893-ab7b-4dc3-8249-06e94a4ad333}</Project>
+      <Name>ILL.BLL.General</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ILL.iStomaLab\ILL.iStomaLab.csproj">
+      <Project>{ff4630ba-08c6-40aa-962e-69dfd97803c1}</Project>
+      <Name>ILL.iStomaLab</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LogoIStomaMar256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iStoma.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

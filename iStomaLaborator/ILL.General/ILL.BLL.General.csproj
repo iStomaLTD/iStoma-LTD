@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{45D7B893-AB7B-4DC3-8249-06E94A4AD333}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ILL.General</RootNamespace>
+    <AssemblyName>ILL.General</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\DLL\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\DLL\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Interfete\IAccesTotal.cs" />
+    <Compile Include="Interfete\IAfisaj.cs" />
+    <Compile Include="Interfete\IAtasareImagine.cs" />
+    <Compile Include="Interfete\IColectieElementePozitionate.cs" />
+    <Compile Include="Interfete\IContact.cs" />
+    <Compile Include="Interfete\IContextPostIT.cs" />
+    <Compile Include="Interfete\ICreare.cs" />
+    <Compile Include="Interfete\IElementAgenda.cs" />
+    <Compile Include="Interfete\IElementAgendaFinanciara.cs" />
+    <Compile Include="Interfete\IElementeCopiate.cs" />
+    <Compile Include="Interfete\IEtapizareInterventie.cs" />
+    <Compile Include="Interfete\IIdentitate.cs" />
+    <Compile Include="Interfete\IImagine.cs" />
+    <Compile Include="Interfete\IInchidere.cs" />
+    <Compile Include="Interfete\IInchidereCuMesaj.cs" />
+    <Compile Include="Interfete\IIntervalDeLucru.cs" />
+    <Compile Include="Interfete\INastere.cs" />
+    <Compile Include="Interfete\IPosesorCodDeBare.cs" />
+    <Compile Include="Interfete\IProprietar.cs" />
+    <Compile Include="Interfete\IProprietarDocumenteCuParametraj.cs" />
+    <Compile Include="Interfete\IProprietarDocumente.cs" />
+    <Compile Include="Interfete\IProprietarElementeAgenda.cs" />
+    <Compile Include="Interfete\ISemnalizareVizuala.cs" />
+    <Compile Include="Interfete\IStergere.cs" />
+    <Compile Include="IPosesorAdresa.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CDL.iStomaLab\CDL.iStomaLab.csproj">
+      <Project>{0ccbe6ac-a3a8-4bda-a345-d496cff03fc9}</Project>
+      <Name>CDL.iStomaLab</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ILL.iStomaLab\ILL.iStomaLab.csproj">
+      <Project>{ff4630ba-08c6-40aa-962e-69dfd97803c1}</Project>
+      <Name>ILL.iStomaLab</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

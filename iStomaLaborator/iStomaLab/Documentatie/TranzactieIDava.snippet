@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>tranzactie standard</Title>
+      <Shortcut>TranzactieIDava</Shortcut>
+      <Description>
+        Code snippet pentru a genera o tranzactie standard
+      </Description>
+      <Author>iDava</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+		<SnippetType>SurroundsWith</SnippetType>
+      </SnippetTypes>
+    </Header>   
+    <Snippet>
+      <Declarations>
+        <Literal>
+          
+        </Literal>
+	  </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[		
+			IDbTransaction Tranzactie = null;
+            try
+            {
+                if (pTranzactie == null)
+                    Tranzactie = CCL.DAL.CCerereSQL.GetTransactionOnConnection();
+                else
+                    Tranzactie = pTranzactie;
+					
+				$selected$ $end$
+				
+				if (pTranzactie == null)
+                {
+                    //Facem Comit tranzactiei doar daca aceasta nu a fost transmisa in parametru. Altfel comitul va fi gestionat de functia apelanta
+                    CCL.DAL.CCerereSQL.CloseTransactionOnConnection(Tranzactie, true);
+                }
+            }
+            catch (Exception)
+            {
+                if ((pTranzactie == null) && (Tranzactie != null)) CCL.DAL.CCerereSQL.CloseTransactionOnConnection(Tranzactie, false);
+                throw;
+            }	
+       ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

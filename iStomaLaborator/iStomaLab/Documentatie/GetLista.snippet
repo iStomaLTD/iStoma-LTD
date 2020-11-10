@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>GetListaId</Title>
+      <Shortcut>GetListaId</Shortcut>
+      <Description>
+        Code snippet pentru a genera codul standard pentru recuperarea unei liste de id-uri dintr-o colectie.
+      </Description>
+      <Author>Ionut</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+		<SnippetType>SurroundsWith</SnippetType>
+      </SnippetTypes>
+    </Header>   
+    <Snippet>
+      <Declarations>
+        <Literal>
+          
+        </Literal>
+	  </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[		
+		List<int> listaRetur = new List<int>();
+            	
+		foreach(var item in this)
+		{
+			if(!listaRetur.Contains(item.Id))
+				listaRetur.Add(item.Id);
+		}
+		return listaRetur;
+       ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

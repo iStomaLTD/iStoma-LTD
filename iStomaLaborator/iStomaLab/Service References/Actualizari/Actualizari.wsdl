@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://licente.istoma.ro" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://licente.istoma.ro" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://licente.istoma.ro">
+      <s:element name="GetDescriereVersiuneDisponibila">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCodClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pParolaClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pLicenta" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pIdStatie" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDescriereVersiuneDisponibilaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDescriereVersiuneDisponibilaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExistaActualizareDisponibila">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCodClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pParolaClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pLicenta" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pIdStatie" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExistaActualizareDisponibilaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ExistaActualizareDisponibilaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SeteazaNouaVersiune">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCodClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pParolaClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pLicenta" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pIdStatie" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SeteazaNouaVersiuneResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetVersiuneaUrmatoare">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCodClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pParolaClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pLicenta" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pIdStatie" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVersiuneaUrmatoareResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVersiuneaUrmatoareResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetDescriereVersiuneDisponibilaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDescriereVersiuneDisponibila" />
+  </wsdl:message>
+  <wsdl:message name="GetDescriereVersiuneDisponibilaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDescriereVersiuneDisponibilaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExistaActualizareDisponibilaSoapIn">
+    <wsdl:part name="parameters" element="tns:ExistaActualizareDisponibila" />
+  </wsdl:message>
+  <wsdl:message name="ExistaActualizareDisponibilaSoapOut">
+    <wsdl:part name="parameters" element="tns:ExistaActualizareDisponibilaResponse" />
+  </wsdl:message>
+  <wsdl:message name="SeteazaNouaVersiuneSoapIn">
+    <wsdl:part name="parameters" element="tns:SeteazaNouaVersiune" />
+  </wsdl:message>
+  <wsdl:message name="SeteazaNouaVersiuneSoapOut">
+    <wsdl:part name="parameters" element="tns:SeteazaNouaVersiuneResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVersiuneaUrmatoareSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVersiuneaUrmatoare" />
+  </wsdl:message>
+  <wsdl:message name="GetVersiuneaUrmatoareSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVersiuneaUrmatoareResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ActualizariSoap">
+    <wsdl:operation name="GetDescriereVersiuneDisponibila">
+      <wsdl:input message="tns:GetDescriereVersiuneDisponibilaSoapIn" />
+      <wsdl:output message="tns:GetDescriereVersiuneDisponibilaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExistaActualizareDisponibila">
+      <wsdl:input message="tns:ExistaActualizareDisponibilaSoapIn" />
+      <wsdl:output message="tns:ExistaActualizareDisponibilaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SeteazaNouaVersiune">
+      <wsdl:input message="tns:SeteazaNouaVersiuneSoapIn" />
+      <wsdl:output message="tns:SeteazaNouaVersiuneSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVersiuneaUrmatoare">
+      <wsdl:input message="tns:GetVersiuneaUrmatoareSoapIn" />
+      <wsdl:output message="tns:GetVersiuneaUrmatoareSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ActualizariSoap" type="tns:ActualizariSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDescriereVersiuneDisponibila">
+      <soap:operation soapAction="http://licente.istoma.ro/GetDescriereVersiuneDisponibila" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExistaActualizareDisponibila">
+      <soap:operation soapAction="http://licente.istoma.ro/ExistaActualizareDisponibila" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SeteazaNouaVersiune">
+      <soap:operation soapAction="http://licente.istoma.ro/SeteazaNouaVersiune" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVersiuneaUrmatoare">
+      <soap:operation soapAction="http://licente.istoma.ro/GetVersiuneaUrmatoare" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ActualizariSoap12" type="tns:ActualizariSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDescriereVersiuneDisponibila">
+      <soap12:operation soapAction="http://licente.istoma.ro/GetDescriereVersiuneDisponibila" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExistaActualizareDisponibila">
+      <soap12:operation soapAction="http://licente.istoma.ro/ExistaActualizareDisponibila" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SeteazaNouaVersiune">
+      <soap12:operation soapAction="http://licente.istoma.ro/SeteazaNouaVersiune" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVersiuneaUrmatoare">
+      <soap12:operation soapAction="http://licente.istoma.ro/GetVersiuneaUrmatoare" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Actualizari">
+    <wsdl:port name="ActualizariSoap" binding="tns:ActualizariSoap">
+      <soap:address location="http://licente.istoma.ro/Actualizari.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ActualizariSoap12" binding="tns:ActualizariSoap12">
+      <soap12:address location="http://licente.istoma.ro/Actualizari.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

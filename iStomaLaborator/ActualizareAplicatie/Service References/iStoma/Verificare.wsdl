@@ -1,0 +1,1068 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://licente.istoma.ro" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://licente.istoma.ro" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://licente.istoma.ro">
+      <s:element name="VerificaLicenta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCodClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pParolaClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pLicenta" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pNumeCalculator" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pLicentaCalculator" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerificaLicentaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VerificaLicentaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizeazaInformatiiConexiune">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCodClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pParolaClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pLicenta" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pIdStatie" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pNumeServer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pNumeInstanta" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pNumeUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pNumeBDD" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pDirectorDocumente" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizeazaInformatiiConexiuneResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Actualizeaza">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCodClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pParolaClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pLicenta" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pNouaParolaClient" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizeazaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ActualizeazaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInformatiiClient">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCodClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pParolaClient" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInformatiiClientResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInformatiiClientResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="IncarcaMultiLingv">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCodClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pParolaClient" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaMultiLingvResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncarcaMultiLingvResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaTabele">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCodClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pParolaClient" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaTabeleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncarcaTabeleResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaView">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCodClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pParolaClient" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaViewResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncarcaViewResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaPS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCodClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pParolaClient" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaPSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncarcaPSResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaTari">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCodClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pParolaClient" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaTariResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncarcaTariResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaRegiuni">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCodClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pParolaClient" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaRegiuniResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncarcaRegiuniResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaLocalitati">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCodClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pParolaClient" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaLocalitatiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncarcaLocalitatiResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaCP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCodClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pParolaClient" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaCPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncarcaCPResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaCOR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCodClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pParolaClient" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaCORResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncarcaCORResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaCAEN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCodClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pParolaClient" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaCAENResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncarcaCAENResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaSMTP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCodClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pParolaClient" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaSMTPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncarcaSMTPResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaDrepturi">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCodClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pParolaClient" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaDrepturiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncarcaDrepturiResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaMeniu">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCodClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pParolaClient" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaMeniuResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncarcaMeniuResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaCitate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCodClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pParolaClient" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaCitateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncarcaCitateResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaAfectiuni">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCodClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pParolaClient" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaAfectiuniResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncarcaAfectiuniResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaOrganeArtificiale">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCodClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pParolaClient" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaOrganeArtificialeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncarcaOrganeArtificialeResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaProduseGestiune">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCodClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pParolaClient" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaProduseGestiuneResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncarcaProduseGestiuneResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaInterventii">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCodClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pParolaClient" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaInterventiiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncarcaInterventiiResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaTratamenteAdministrative">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCodClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pParolaClient" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaTratamenteAdministrativeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncarcaTratamenteAdministrativeResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaEvenimenteCalendaristice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCodClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pParolaClient" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncarcaEvenimenteCalendaristiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncarcaEvenimenteCalendaristiceResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="VerificaLicentaSoapIn">
+    <wsdl:part name="parameters" element="tns:VerificaLicenta" />
+  </wsdl:message>
+  <wsdl:message name="VerificaLicentaSoapOut">
+    <wsdl:part name="parameters" element="tns:VerificaLicentaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizeazaInformatiiConexiuneSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizeazaInformatiiConexiune" />
+  </wsdl:message>
+  <wsdl:message name="ActualizeazaInformatiiConexiuneSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizeazaInformatiiConexiuneResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizeazaSoapIn">
+    <wsdl:part name="parameters" element="tns:Actualizeaza" />
+  </wsdl:message>
+  <wsdl:message name="ActualizeazaSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizeazaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInformatiiClientSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInformatiiClient" />
+  </wsdl:message>
+  <wsdl:message name="GetInformatiiClientSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInformatiiClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaMultiLingvSoapIn">
+    <wsdl:part name="parameters" element="tns:IncarcaMultiLingv" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaMultiLingvSoapOut">
+    <wsdl:part name="parameters" element="tns:IncarcaMultiLingvResponse" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaTabeleSoapIn">
+    <wsdl:part name="parameters" element="tns:IncarcaTabele" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaTabeleSoapOut">
+    <wsdl:part name="parameters" element="tns:IncarcaTabeleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaViewSoapIn">
+    <wsdl:part name="parameters" element="tns:IncarcaView" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaViewSoapOut">
+    <wsdl:part name="parameters" element="tns:IncarcaViewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaPSSoapIn">
+    <wsdl:part name="parameters" element="tns:IncarcaPS" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaPSSoapOut">
+    <wsdl:part name="parameters" element="tns:IncarcaPSResponse" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaTariSoapIn">
+    <wsdl:part name="parameters" element="tns:IncarcaTari" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaTariSoapOut">
+    <wsdl:part name="parameters" element="tns:IncarcaTariResponse" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaRegiuniSoapIn">
+    <wsdl:part name="parameters" element="tns:IncarcaRegiuni" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaRegiuniSoapOut">
+    <wsdl:part name="parameters" element="tns:IncarcaRegiuniResponse" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaLocalitatiSoapIn">
+    <wsdl:part name="parameters" element="tns:IncarcaLocalitati" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaLocalitatiSoapOut">
+    <wsdl:part name="parameters" element="tns:IncarcaLocalitatiResponse" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaCPSoapIn">
+    <wsdl:part name="parameters" element="tns:IncarcaCP" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaCPSoapOut">
+    <wsdl:part name="parameters" element="tns:IncarcaCPResponse" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaCORSoapIn">
+    <wsdl:part name="parameters" element="tns:IncarcaCOR" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaCORSoapOut">
+    <wsdl:part name="parameters" element="tns:IncarcaCORResponse" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaCAENSoapIn">
+    <wsdl:part name="parameters" element="tns:IncarcaCAEN" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaCAENSoapOut">
+    <wsdl:part name="parameters" element="tns:IncarcaCAENResponse" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaSMTPSoapIn">
+    <wsdl:part name="parameters" element="tns:IncarcaSMTP" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaSMTPSoapOut">
+    <wsdl:part name="parameters" element="tns:IncarcaSMTPResponse" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaDrepturiSoapIn">
+    <wsdl:part name="parameters" element="tns:IncarcaDrepturi" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaDrepturiSoapOut">
+    <wsdl:part name="parameters" element="tns:IncarcaDrepturiResponse" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaMeniuSoapIn">
+    <wsdl:part name="parameters" element="tns:IncarcaMeniu" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaMeniuSoapOut">
+    <wsdl:part name="parameters" element="tns:IncarcaMeniuResponse" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaCitateSoapIn">
+    <wsdl:part name="parameters" element="tns:IncarcaCitate" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaCitateSoapOut">
+    <wsdl:part name="parameters" element="tns:IncarcaCitateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaAfectiuniSoapIn">
+    <wsdl:part name="parameters" element="tns:IncarcaAfectiuni" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaAfectiuniSoapOut">
+    <wsdl:part name="parameters" element="tns:IncarcaAfectiuniResponse" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaOrganeArtificialeSoapIn">
+    <wsdl:part name="parameters" element="tns:IncarcaOrganeArtificiale" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaOrganeArtificialeSoapOut">
+    <wsdl:part name="parameters" element="tns:IncarcaOrganeArtificialeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaProduseGestiuneSoapIn">
+    <wsdl:part name="parameters" element="tns:IncarcaProduseGestiune" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaProduseGestiuneSoapOut">
+    <wsdl:part name="parameters" element="tns:IncarcaProduseGestiuneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaInterventiiSoapIn">
+    <wsdl:part name="parameters" element="tns:IncarcaInterventii" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaInterventiiSoapOut">
+    <wsdl:part name="parameters" element="tns:IncarcaInterventiiResponse" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaTratamenteAdministrativeSoapIn">
+    <wsdl:part name="parameters" element="tns:IncarcaTratamenteAdministrative" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaTratamenteAdministrativeSoapOut">
+    <wsdl:part name="parameters" element="tns:IncarcaTratamenteAdministrativeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaEvenimenteCalendaristiceSoapIn">
+    <wsdl:part name="parameters" element="tns:IncarcaEvenimenteCalendaristice" />
+  </wsdl:message>
+  <wsdl:message name="IncarcaEvenimenteCalendaristiceSoapOut">
+    <wsdl:part name="parameters" element="tns:IncarcaEvenimenteCalendaristiceResponse" />
+  </wsdl:message>
+  <wsdl:portType name="VerificareSoap">
+    <wsdl:operation name="VerificaLicenta">
+      <wsdl:input message="tns:VerificaLicentaSoapIn" />
+      <wsdl:output message="tns:VerificaLicentaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizeazaInformatiiConexiune">
+      <wsdl:input message="tns:ActualizeazaInformatiiConexiuneSoapIn" />
+      <wsdl:output message="tns:ActualizeazaInformatiiConexiuneSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Actualizeaza">
+      <wsdl:input message="tns:ActualizeazaSoapIn" />
+      <wsdl:output message="tns:ActualizeazaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInformatiiClient">
+      <wsdl:input message="tns:GetInformatiiClientSoapIn" />
+      <wsdl:output message="tns:GetInformatiiClientSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaMultiLingv">
+      <wsdl:input message="tns:IncarcaMultiLingvSoapIn" />
+      <wsdl:output message="tns:IncarcaMultiLingvSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaTabele">
+      <wsdl:input message="tns:IncarcaTabeleSoapIn" />
+      <wsdl:output message="tns:IncarcaTabeleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaView">
+      <wsdl:input message="tns:IncarcaViewSoapIn" />
+      <wsdl:output message="tns:IncarcaViewSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaPS">
+      <wsdl:input message="tns:IncarcaPSSoapIn" />
+      <wsdl:output message="tns:IncarcaPSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaTari">
+      <wsdl:input message="tns:IncarcaTariSoapIn" />
+      <wsdl:output message="tns:IncarcaTariSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaRegiuni">
+      <wsdl:input message="tns:IncarcaRegiuniSoapIn" />
+      <wsdl:output message="tns:IncarcaRegiuniSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaLocalitati">
+      <wsdl:input message="tns:IncarcaLocalitatiSoapIn" />
+      <wsdl:output message="tns:IncarcaLocalitatiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaCP">
+      <wsdl:input message="tns:IncarcaCPSoapIn" />
+      <wsdl:output message="tns:IncarcaCPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaCOR">
+      <wsdl:input message="tns:IncarcaCORSoapIn" />
+      <wsdl:output message="tns:IncarcaCORSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaCAEN">
+      <wsdl:input message="tns:IncarcaCAENSoapIn" />
+      <wsdl:output message="tns:IncarcaCAENSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaSMTP">
+      <wsdl:input message="tns:IncarcaSMTPSoapIn" />
+      <wsdl:output message="tns:IncarcaSMTPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaDrepturi">
+      <wsdl:input message="tns:IncarcaDrepturiSoapIn" />
+      <wsdl:output message="tns:IncarcaDrepturiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaMeniu">
+      <wsdl:input message="tns:IncarcaMeniuSoapIn" />
+      <wsdl:output message="tns:IncarcaMeniuSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaCitate">
+      <wsdl:input message="tns:IncarcaCitateSoapIn" />
+      <wsdl:output message="tns:IncarcaCitateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaAfectiuni">
+      <wsdl:input message="tns:IncarcaAfectiuniSoapIn" />
+      <wsdl:output message="tns:IncarcaAfectiuniSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaOrganeArtificiale">
+      <wsdl:input message="tns:IncarcaOrganeArtificialeSoapIn" />
+      <wsdl:output message="tns:IncarcaOrganeArtificialeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaProduseGestiune">
+      <wsdl:input message="tns:IncarcaProduseGestiuneSoapIn" />
+      <wsdl:output message="tns:IncarcaProduseGestiuneSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaInterventii">
+      <wsdl:input message="tns:IncarcaInterventiiSoapIn" />
+      <wsdl:output message="tns:IncarcaInterventiiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaTratamenteAdministrative">
+      <wsdl:input message="tns:IncarcaTratamenteAdministrativeSoapIn" />
+      <wsdl:output message="tns:IncarcaTratamenteAdministrativeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaEvenimenteCalendaristice">
+      <wsdl:input message="tns:IncarcaEvenimenteCalendaristiceSoapIn" />
+      <wsdl:output message="tns:IncarcaEvenimenteCalendaristiceSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="VerificareSoap" type="tns:VerificareSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="VerificaLicenta">
+      <soap:operation soapAction="http://licente.istoma.ro/VerificaLicenta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizeazaInformatiiConexiune">
+      <soap:operation soapAction="http://licente.istoma.ro/ActualizeazaInformatiiConexiune" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Actualizeaza">
+      <soap:operation soapAction="http://licente.istoma.ro/Actualizeaza" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInformatiiClient">
+      <soap:operation soapAction="http://licente.istoma.ro/GetInformatiiClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaMultiLingv">
+      <soap:operation soapAction="http://licente.istoma.ro/IncarcaMultiLingv" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaTabele">
+      <soap:operation soapAction="http://licente.istoma.ro/IncarcaTabele" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaView">
+      <soap:operation soapAction="http://licente.istoma.ro/IncarcaView" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaPS">
+      <soap:operation soapAction="http://licente.istoma.ro/IncarcaPS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaTari">
+      <soap:operation soapAction="http://licente.istoma.ro/IncarcaTari" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaRegiuni">
+      <soap:operation soapAction="http://licente.istoma.ro/IncarcaRegiuni" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaLocalitati">
+      <soap:operation soapAction="http://licente.istoma.ro/IncarcaLocalitati" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaCP">
+      <soap:operation soapAction="http://licente.istoma.ro/IncarcaCP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaCOR">
+      <soap:operation soapAction="http://licente.istoma.ro/IncarcaCOR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaCAEN">
+      <soap:operation soapAction="http://licente.istoma.ro/IncarcaCAEN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaSMTP">
+      <soap:operation soapAction="http://licente.istoma.ro/IncarcaSMTP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaDrepturi">
+      <soap:operation soapAction="http://licente.istoma.ro/IncarcaDrepturi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaMeniu">
+      <soap:operation soapAction="http://licente.istoma.ro/IncarcaMeniu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaCitate">
+      <soap:operation soapAction="http://licente.istoma.ro/IncarcaCitate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaAfectiuni">
+      <soap:operation soapAction="http://licente.istoma.ro/IncarcaAfectiuni" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaOrganeArtificiale">
+      <soap:operation soapAction="http://licente.istoma.ro/IncarcaOrganeArtificiale" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaProduseGestiune">
+      <soap:operation soapAction="http://licente.istoma.ro/IncarcaProduseGestiune" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaInterventii">
+      <soap:operation soapAction="http://licente.istoma.ro/IncarcaInterventii" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaTratamenteAdministrative">
+      <soap:operation soapAction="http://licente.istoma.ro/IncarcaTratamenteAdministrative" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaEvenimenteCalendaristice">
+      <soap:operation soapAction="http://licente.istoma.ro/IncarcaEvenimenteCalendaristice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="VerificareSoap12" type="tns:VerificareSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="VerificaLicenta">
+      <soap12:operation soapAction="http://licente.istoma.ro/VerificaLicenta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizeazaInformatiiConexiune">
+      <soap12:operation soapAction="http://licente.istoma.ro/ActualizeazaInformatiiConexiune" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Actualizeaza">
+      <soap12:operation soapAction="http://licente.istoma.ro/Actualizeaza" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInformatiiClient">
+      <soap12:operation soapAction="http://licente.istoma.ro/GetInformatiiClient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaMultiLingv">
+      <soap12:operation soapAction="http://licente.istoma.ro/IncarcaMultiLingv" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaTabele">
+      <soap12:operation soapAction="http://licente.istoma.ro/IncarcaTabele" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaView">
+      <soap12:operation soapAction="http://licente.istoma.ro/IncarcaView" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaPS">
+      <soap12:operation soapAction="http://licente.istoma.ro/IncarcaPS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaTari">
+      <soap12:operation soapAction="http://licente.istoma.ro/IncarcaTari" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaRegiuni">
+      <soap12:operation soapAction="http://licente.istoma.ro/IncarcaRegiuni" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaLocalitati">
+      <soap12:operation soapAction="http://licente.istoma.ro/IncarcaLocalitati" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaCP">
+      <soap12:operation soapAction="http://licente.istoma.ro/IncarcaCP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaCOR">
+      <soap12:operation soapAction="http://licente.istoma.ro/IncarcaCOR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaCAEN">
+      <soap12:operation soapAction="http://licente.istoma.ro/IncarcaCAEN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaSMTP">
+      <soap12:operation soapAction="http://licente.istoma.ro/IncarcaSMTP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaDrepturi">
+      <soap12:operation soapAction="http://licente.istoma.ro/IncarcaDrepturi" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaMeniu">
+      <soap12:operation soapAction="http://licente.istoma.ro/IncarcaMeniu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaCitate">
+      <soap12:operation soapAction="http://licente.istoma.ro/IncarcaCitate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaAfectiuni">
+      <soap12:operation soapAction="http://licente.istoma.ro/IncarcaAfectiuni" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaOrganeArtificiale">
+      <soap12:operation soapAction="http://licente.istoma.ro/IncarcaOrganeArtificiale" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaProduseGestiune">
+      <soap12:operation soapAction="http://licente.istoma.ro/IncarcaProduseGestiune" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaInterventii">
+      <soap12:operation soapAction="http://licente.istoma.ro/IncarcaInterventii" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaTratamenteAdministrative">
+      <soap12:operation soapAction="http://licente.istoma.ro/IncarcaTratamenteAdministrative" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncarcaEvenimenteCalendaristice">
+      <soap12:operation soapAction="http://licente.istoma.ro/IncarcaEvenimenteCalendaristice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Verificare">
+    <wsdl:port name="VerificareSoap" binding="tns:VerificareSoap">
+      <soap:address location="http://licente.istoma.ro/Verificare.asmx" />
+    </wsdl:port>
+    <wsdl:port name="VerificareSoap12" binding="tns:VerificareSoap12">
+      <soap12:address location="http://licente.istoma.ro/Verificare.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,49 @@
+﻿IF OBJECT_ID('ClientiComenzi_TD_V', 'V') IS NOT NULL
+    DROP VIEW ClientiComenzi_TD_V;
+
+CREATE VIEW [dbo].[ClientiComenzi_TD_V]
+AS
+
+SELECT        cc.nId, cch.xnIdCabinet, cch.xnIdReprezentantClient, cch.dDataPrimire, cch.dDataLaGata, Clienti_TD_1.tDenumire, ClientiFacturi_TD.dDataFactura, ClientiFacturi_TD.nNumarFactura, ClientiFacturi_TD.tSerieFactura, 
+                         ClientiFacturi_TD.nMonedaFactura, dbo.ClientiCabinete_TD.tDenumire AS tDenumireCabinet, dbo.ClientiReprezentanti_TD.tNume, dbo.ClientiReprezentanti_TD.tPrenume, dbo.ClientiReprezentanti_TD.nTitulatura, 
+                         dbo.Etape_TP.tDenumire AS tDenumireEtapa, dbo.ClientiComenziEtape_TD.xnIdEtapa, dbo.ClientiComenziEtape_TD.tObservatii AS tObservatiiEtapa, dbo.ListaPreturiStandard_TP.nValoareRON, 
+                         dbo.ListaPreturiStandard_TP.nValoareEUR, dbo.ClientiComenziEtape_TD.dDataFinal AS dDataSfarsitEtapa, cc.xnIdComandaHeader, cc.xnIdLucrare, cc.xnIdFactura, cc.xnIdTehnician, cc.dDataCreare, cc.xnUtilizatorCreare, 
+                         cc.dDataInchidere, cc.xnUtilizatorInchidere, cc.tMotivInchidere, cc.tObservatii, cc.nValoareInitiala, cc.nValoareFinala, cc.nMoneda, cc.bUrgent, cc.nNrElemente, cc.tCuloareLucrare, cc.bAcceptata, cc.tCodLucrare, 
+                         cc.nPretUnitarInitial, cc.nPretUnitarFinal, cp.xnIdClient AS xnIdClientPacient, cch.xnIdEtapaCurenta, cch.xnIdClient, dbo.Clienti_TD.tDenumire AS tDenumireClient, dbo.ListaPreturiStandard_TP.tDenumire AS tDenumireLucrare, 
+                         dbo.Utilizator_TD.tNume AS tNumeTehnician, dbo.Utilizator_TD.tPrenume AS tPrenumeTehnician, dbo.Utilizator_TD.nCuloare AS nCuloareTehnician, dbo.ListaPreturiStandard_TP.tDenumirePrescurtata, 
+                         dbo.ClientiComenziEtape_TD.bRefacere, cch.xnIdPacient
+FROM            dbo.ClientiComenzi_TD AS cc LEFT OUTER JOIN
+                         dbo.ClientiComenziHeader_TD AS cch ON cc.xnIdComandaHeader = cch.nId LEFT OUTER JOIN
+                         dbo.ClientiComenziEtape_TD ON cch.xnIdEtapaCurenta = dbo.ClientiComenziEtape_TD.nId LEFT OUTER JOIN
+                         dbo.Clienti_TD AS Clienti_TD_1 ON cch.xnIdClient = Clienti_TD_1.nId LEFT OUTER JOIN
+                         dbo.ListaPreturiStandard_TP ON cc.xnIdLucrare = dbo.ListaPreturiStandard_TP.nId LEFT OUTER JOIN
+                         dbo.ClientiPacienti_TD AS cp ON cch.xnIdPacient = cp.nId LEFT OUTER JOIN
+                         dbo.Clienti_TD ON cch.xnIdClient = dbo.Clienti_TD.nId LEFT OUTER JOIN
+                         dbo.Etape_TP ON dbo.ClientiComenziEtape_TD.xnIdEtapa = dbo.Etape_TP.nId LEFT OUTER JOIN
+                         dbo.Utilizator_TD ON dbo.ClientiComenziEtape_TD.xnIdTehnician = dbo.Utilizator_TD.nId LEFT OUTER JOIN
+                         dbo.ClientiCabinete_TD ON cch.xnIdCabinet = dbo.ClientiCabinete_TD.nId LEFT OUTER JOIN
+                         dbo.ClientiReprezentanti_TD ON cch.xnIdReprezentantClient = dbo.ClientiReprezentanti_TD.nId LEFT OUTER JOIN
+                         dbo.ClientiFacturi_TD AS ClientiFacturi_TD ON cc.xnIdFactura = ClientiFacturi_TD.nId
+
+
+-$$$-
+
+IF OBJECT_ID('ClientiComenziEtape_TD_V', 'V') IS NOT NULL
+    DROP VIEW ClientiComenziEtape_TD_V;
+
+CREATE VIEW [dbo].[ClientiComenziEtape_TD_V]
+AS
+SELECT        CCE.nId, CCE.xnIdComandaClient, CCE.xnIdEtapa, CCE.dDataInceput, CCE.dDataFinal, CCE.xnIdTehnician, CCE.tObservatii, CCE.dDataCreare, CCE.xnUtilizatorCreare, CCE.dDataInchidere, CCE.xnUtilizatorInchidere, 
+                         CCE.tMotivInchidere, CCE.bRefacere, dbo.Etape_TP.tDenumire, CCE.nStatus, CC.tObservatii AS tObservatiiComanda, CC.xnIdLucrare, CC.nNrElemente, CC.bUrgent, CC.tCuloareLucrare, 
+                         dbo.Clienti_TD.tDenumire AS tDenumireClient, dbo.Utilizator_TD.tNume, dbo.Utilizator_TD.tPrenume, dbo.Utilizator_TD.tPorecla, dbo.ListaPreturiStandard_TP.tDenumire AS tDenumireLucrare, 
+                         dbo.ListaPreturiStandard_TP.tDenumirePrescurtata AS tDenumirePrescurtataLucrare, CC.dDataCreare AS dDataCreareLucrare, dbo.ClientiComenziHeader_TD.dDataPrimire AS dDataPrimireLucrare, 
+                         dbo.ClientiComenziHeader_TD.dDataLaGata AS dDataLaGataLucrare, dbo.ClientiComenziHeader_TD.xnIdReprezentantClient, dbo.ClientiComenziHeader_TD.xnIdPacient, dbo.ClientiPacienti_TD.tNumePacient, 
+                         dbo.ClientiPacienti_TD.tPrenumePacient, dbo.ClientiComenziHeader_TD.xnIdCabinet
+FROM            dbo.ClientiComenziEtape_TD AS CCE INNER JOIN
+                         dbo.Etape_TP ON CCE.xnIdEtapa = dbo.Etape_TP.nId LEFT OUTER JOIN
+                         dbo.ClientiComenzi_TD AS CC ON CCE.xnIdComandaClient = CC.nId LEFT OUTER JOIN
+                         dbo.Utilizator_TD ON CCE.xnIdTehnician = dbo.Utilizator_TD.nId LEFT OUTER JOIN
+                         dbo.ListaPreturiStandard_TP ON CC.xnIdLucrare = dbo.ListaPreturiStandard_TP.nId LEFT OUTER JOIN
+                         dbo.ClientiComenziHeader_TD ON CCE.nId = dbo.ClientiComenziHeader_TD.nId AND CC.xnIdComandaHeader = dbo.ClientiComenziHeader_TD.nId LEFT OUTER JOIN
+                         dbo.ClientiPacienti_TD ON CCE.nId = dbo.ClientiPacienti_TD.nId AND dbo.ClientiComenziHeader_TD.xnIdPacient = dbo.ClientiPacienti_TD.nId LEFT OUTER JOIN
+                         dbo.Clienti_TD ON dbo.ClientiComenziHeader_TD.xnIdClient = dbo.Clienti_TD.nId

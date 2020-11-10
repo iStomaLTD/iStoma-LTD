@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>try catch cu gestiune exceptie</Title>
+      <Shortcut>TryGestiuneFinally</Shortcut>
+      <Description>
+        Code snippet pentru a genera un bloc try catch cu gestiunea erorilor.
+      </Description>
+      <Author>Ionut</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+		<SnippetType>SurroundsWith</SnippetType>
+      </SnippetTypes>
+    </Header>   
+    <Snippet>
+      <Declarations>
+        <Literal>
+          
+        </Literal>
+	  </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[	
+			if (this.lSeIncarca) return;	
+			try
+            {
+				incepeIncarcarea();
+				
+				$selected$ $end$
+            }
+            catch (Exception ex)
+            {
+                GestiuneErori.AfiseazaMesaj(this.GetFormParinte(), ex);
+            }
+            finally
+            {
+                finalizeazaIncarcarea();
+            }
+       ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

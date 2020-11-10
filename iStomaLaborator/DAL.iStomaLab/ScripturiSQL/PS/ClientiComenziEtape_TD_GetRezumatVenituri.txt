@@ -1,0 +1,23 @@
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE ClientiComenziEtape_TD_GetRezumatVenituri @DataInceput datetime, @DataSfarsit datetime
+	
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+
+   SELECT cce.xnIdTehnician, SUM(ISNULL(cce.nNrElemente, 1)) AS NrElemente, SUM(ISNULL(cce.nNrElemente, 1) * isnull(uvd.nPret,0)) as TotalCuvenit 
+   FROM dbo.ClientiComenziEtape_TD_V AS cce INNER JOIN
+        dbo.UtilizatoriVenituriDetalii_TD_V AS uvd ON cce.xnIdEtapa = uvd.xnIdEtapa AND cce.xnIdTehnician = uvd.xnIdUtilizator 
+		AND cce.dDataInceput >= uvd.dDataInceput AND cce.dDataInceput <=  isnull( uvd.dDataFinal, getdate())
+		and uvd.dDataInchidere IS NULL
+	WHERE cce.dDataInchidere is null AND cce.DataInchidereComanda is null and cce.dDataInceput >= @DataInceput AND cce.dDataInceput <= @DataSfarsit
+  --WHERE cce.dDataInceput BETWEEN '2020-10-10' AND '2020-11-30'
+	GROUP BY cce.xnIdTehnician
+END
+GO

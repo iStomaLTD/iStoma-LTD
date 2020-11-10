@@ -1,0 +1,21 @@
+﻿USE [iStomaLab]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Banci_TP_GetListaCautare]    Script Date: 08.01.2018 19:28:28 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[Banci_TP_GetListaCautare] 
+    @tDenumire nVarChar(100)
+AS
+BEGIN
+
+    SELECT nId, tDenumire FROM Banci_TP
+	WHERE tDenumire LIKE @tDenumire collate Latin1_General_BIN2 AND dDataInchidere IS NULL 
+	ORDER BY tDenumire asc
+
+END
+GO

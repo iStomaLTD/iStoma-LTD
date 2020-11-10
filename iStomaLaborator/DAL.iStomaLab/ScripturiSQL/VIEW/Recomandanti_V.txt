@@ -1,0 +1,9 @@
+﻿CREATE VIEW [dbo].[Recomandanti_V]
+AS
+SELECT  nId, 16 AS nTipObiect, tDenumire
+FROM            dbo.ListeParametrabile_TP
+WHERE nTipLista = 23 AND dDataInchidere IS NULL
+UNION
+SELECT nId, 21 AS nTipObiect, tDenumire 
+FROM Clienti_TD
+WHERE dDataInchidere IS NULL

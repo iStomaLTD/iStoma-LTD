@@ -1,0 +1,70 @@
+﻿--script modificare coloana
+ALTER TABLE UtilizatorRubriciMeniu_TD ALTER COLUMN tInformatiiAditionale nvarchar(1500)
+
+--script modificare in Localitati_REF_V
+SELECT        dbo.Localitati_REF.nId, dbo.Localitati_REF.xnIdRegiune, dbo.Localitati_REF.tNume, dbo.Localitati_REF.nTip, dbo.Localitati_REF.nLimbaDenumirii, dbo.Localitati_REF.nPreferinta, dbo.Localitati_REF.dDataCreare, 
+                         dbo.Localitati_REF.xnUtilizatorCreare, dbo.Localitati_REF.dDataInchidere, dbo.Localitati_REF.xnUtilizatorInchidere, dbo.Localitati_REF.tMotivInchidere, dbo.Regiuni_REF_V.xnIdTara, 
+                         dbo.Regiuni_REF_V.tNume AS tNumeRegiune, dbo.Regiuni_REF_V.tNumeTara
+FROM            dbo.Localitati_REF LEFT OUTER JOIN
+                         dbo.Regiuni_REF_V ON dbo.Localitati_REF.nId = dbo.Regiuni_REF_V.nId
+
+
+--adaugare coloana
+IF COL_LENGTH('Pacient_TD','bPacientCareIntarzie') IS NULL
+BEGIN
+	ALTER TABLE Pacient_TD
+	ADD bPacientCareIntarzie bit NULL
+END
+
+
+-- STERGE VIEW DACA EXISTA
+IF OBJECT_ID('nView', 'V') IS NOT NULL
+    DROP VIEW nView;
+
+-- CREARE TABELA DACA NU EXISTA
+IF OBJECT_ID(N'InterventiiPreturiUtilizatori_TP', N'U') IS NULL
+BEGIN
+	CREATE TABLE [dbo].[InterventiiPreturiUtilizatori_TP](
+		[xnIdInterventie] [int] NOT NULL,
+		[xnIdUtilizator] [int] NOT NULL,
+		[nPretRON] [decimal](18, 4) NULL,
+		[nPretEUR] [decimal](18, 4) NULL,
+	 CONSTRAINT [PK_InterventiiPreturiUtilizatori_TP] PRIMARY KEY CLUSTERED 
+	(
+		[xnIdInterventie] ASC,
+		[xnIdUtilizator] ASC
+	)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+	) ON [PRIMARY]
+END
+
+
+
+
+-- adaugare coloana PRIMARY KEY
+ALTER TABLE dbo.YourTable
+   ADD ID INT IDENTITY
+
+ALTER TABLE dbo.YourTable
+   ADD CONSTRAINT PK_YourTable
+   PRIMARY KEY(ID)
+
+-- + 
+--C = CHECK constraint
+--D = DEFAULT (constraint or stand-alone)
+--F = FOREIGN KEY constraint
+--PK = PRIMARY KEY constraint
+--UQ = UNIQUE constraint
+
+
+
+
+---------- sterge toate view-urile din baza
+
+DECLARE @sql VARCHAR(MAX) = ''
+        , @crlf VARCHAR(2) = CHAR(13) + CHAR(10) ;
+
+SELECT @sql = @sql + 'DROP VIEW ' + QUOTENAME(SCHEMA_NAME(schema_id)) + '.' + QUOTENAME(v.name) +';' + @crlf
+FROM   sys.views v
+
+PRINT @sql;
+exec (@sql);

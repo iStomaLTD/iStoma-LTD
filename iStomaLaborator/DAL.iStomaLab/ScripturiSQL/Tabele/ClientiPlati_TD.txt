@@ -1,0 +1,38 @@
+﻿
+ALTER TABLE [dbo].[ClientiPlati_TD] DROP CONSTRAINT [DF_ClientiPlati_TD_dDataCreare]
+GO
+
+/****** Object:  Table [dbo].[ClientiPlati_TD]    Script Date: 02-Aug-19 22:31:08 ******/
+DROP TABLE [dbo].[ClientiPlati_TD]
+GO
+
+/****** Object:  Table [dbo].[ClientiPlati_TD]    Script Date: 02-Aug-19 22:31:08 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[ClientiPlati_TD](
+	[nId] [int] IDENTITY(1,1) NOT NULL,
+	[xnIdClient] [int] NOT NULL,
+	[dDataPlata] [datetime] NOT NULL,
+	[nSumaPlatita] [money] NOT NULL,
+	[nModalitatePlata] [tinyint] NOT NULL,
+	[nCursBNR] [money] NULL,
+	[dDataCreare] [datetime] NULL,
+	[xnUtilizatorCreare] [int] NULL,
+	[dDataInchidere] [datetime] NULL,
+	[xnUtilizatorInchidere] [int] NULL,
+	[tMotivInchidere] [nvarchar](500) NULL,
+	[tSerieChitanta] [nvarchar](10) NULL,
+	[nNumarChitanta] [int] NULL,
+ CONSTRAINT [PK_ClientiPlati_TD] PRIMARY KEY CLUSTERED 
+(
+	[nId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[ClientiPlati_TD] ADD  CONSTRAINT [DF_ClientiPlati_TD_dDataCreare]  DEFAULT (getdate()) FOR [dDataCreare]
+GO

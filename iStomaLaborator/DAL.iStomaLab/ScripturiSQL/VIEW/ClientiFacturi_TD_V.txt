@@ -1,0 +1,12 @@
+﻿DROP VIEW [dbo].[ClientiFacturi_TD_V]
+GO
+
+CREATE VIEW [dbo].[ClientiFacturi_TD_V]
+AS
+SELECT        dbo.ClientiFacturi_TD.nId, dbo.ClientiFacturi_TD.xnIdClient, dbo.ClientiFacturi_TD.dDataFactura, dbo.ClientiFacturi_TD.tSerieFactura, dbo.ClientiFacturi_TD.nNumarFactura, dbo.ClientiFacturi_TD.tObservatii, 
+                         dbo.ClientiFacturi_TD.nMonedaFactura, dbo.ClientiFacturi_TD.nCursBNR, dbo.ClientiFacturi_TD.dDataCreare, dbo.ClientiFacturi_TD.xnUtilizatorCreare, dbo.ClientiFacturi_TD.dDataInchidere, 
+                         dbo.ClientiFacturi_TD.xnUtilizatorInchidere, dbo.ClientiFacturi_TD.tMotivInchidere, dbo.Clienti_TD.tDenumire AS tDenumireClient, dbo.ClientiFacturi_TD.xnIdChitantaAsociata, dbo.ClientiPlati_TD.tSerieChitanta, 
+                         dbo.ClientiPlati_TD.nNumarChitanta
+FROM            dbo.Clienti_TD INNER JOIN
+                         dbo.ClientiFacturi_TD ON dbo.Clienti_TD.nId = dbo.ClientiFacturi_TD.xnIdClient LEFT OUTER JOIN
+                         dbo.ClientiPlati_TD ON dbo.ClientiFacturi_TD.xnIdChitantaAsociata = dbo.ClientiPlati_TD.nId

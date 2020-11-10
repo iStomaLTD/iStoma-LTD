@@ -1,0 +1,26 @@
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[ClientiComenziEtape_TD_GetDetaliatVenituri] 
+@IdTehnician int,
+@DataInceput datetime,
+@DataSfarsit datetime
+	
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+
+        SELECT cce.xnIdTehnician, cce.dDataInceput, cce.tDenumireLucrare, isnull(cce.tNumePacient,'') as tNumePacient, isnull(cce.tPrenumePacient,'') as tPrenumePacient, cce.tDenumireClient,
+		  --isnull(cce.tNumePacient,'') + ' ' + isnull(cce.tPrenumePacient,'') AS DenumirePacient,  cce.tDenumireClient as DenumireClinica,
+		  cce.tDenumire, ISNULL(cce.nNrElemente, 1) AS nNrElemente, nValoareFinala, ISNULL(cce.nNrElemente, 1) * ISNULL(uvd.nPret, 0) AS Venit, cce.xnIdClient, cce.xnIdLucrare,  cce.xnIdEtapa , uvd.xnIdEtapa as xnIdEtapaVenit --cce.xnIdEtapa 
+   FROM  ClientiComenziEtape_TD_V AS cce INNER JOIN 
+		 UtilizatoriVenituriDetalii_TD_V AS uvd ON cce.xnIdEtapa = uvd.xnIdEtapa AND cce.xnIdTehnician = uvd.xnIdUtilizator 
+		 AND cce.dDataInceput >= uvd.dDataInceput AND cce.dDataInceput <= ISNULL(uvd.dDataFinal, GETDATE()) AND uvd.dDataInchidere IS NULL
+   WHERE  (cce.xnIdTehnician = @IdTehnician) AND (cce.dDataInchidere IS NULL) AND (cce.DataInchidereComanda IS NULL) AND (cce.dDataInceput >= @DataInceput) AND (cce.dDataInceput <= @DataSfarsit)
+   
+  
+END

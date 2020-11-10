@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Metoda de selectie a unei clase DAL standard</Title>
+      <Shortcut>selectDAL</Shortcut>
+      <Description>
+        Code snippet pentru a genera o metoda de selectie standard a unei clase DAL.
+      </Description>
+      <Author>Ionut</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>   
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>GetLista</ID>
+          <ToolTip>Inlocuieste cu numele real al metodei DAL</ToolTip>
+          <Default>GetLista</Default>
+        </Literal>
+		<Literal>
+          <ID>Procedura_Stocata</ID>
+          <ToolTip>Inlocuieste cu numele real al procedurei stocate</ToolTip>
+          <Default>Procedura_Stocata</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[		
+        public static DataSet $GetLista$()
+        {
+            List<IDataParameter> lstParametri = new List<IDataParameter>();
+
+            DataSet ds = CCerereSQL.GetDataSetByStoredProc("$Procedura_Stocata$", lstParametri, null, null);
+            lstParametri = null;
+            return ds;
+        }	
+       ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

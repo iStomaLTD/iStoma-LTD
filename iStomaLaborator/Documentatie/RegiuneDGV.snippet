@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Regiunile comuneunui DGV</Title>
+      <Shortcut>RegiuneDGV</Shortcut>
+      <Description>
+        Code snippet pentru a genera metodele standard ale unui DGV.
+      </Description>
+      <Author>iDava</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>   
+    <Snippet>
+      <Declarations>
+		<Literal Editable="false">
+          <ID>NumeClasa</ID>
+          <Function>
+            ClassName()
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[		
+        
+		private enum EnumColoaneDGV
+        {
+			col
+		}
+		
+		private void ConstruiesteColoaneDGV()
+        {
+            this.dgvLista.IncepeConstructieColoane();
+			
+						
+			
+			this.dgvLista.FinalizeazaConstructieColoane();
+		}
+		
+		private void ConstruiesteRanduriDGV()
+        {
+            this.dgvLista.IncepeContructieRanduri();
+			
+			var listaElem = null;
+			
+			//Incarcam lista
+            foreach (var elem in listaElem)
+            {
+				incarcaRand(this.dgvLista.Rows[this.dgvLista.Rows.Add()], elem);
+			}
+			
+			this.dgvLista.FinalizeazaContructieRanduri();
+		}
+		
+		private void incarcaRand(DataGridViewRow pRand, object pElem)
+		{
+			pRand.Tag = pElem;
+			
+			pRand.Cells[EnumColoaneDGV.col.ToString()].Value = pElem;
+		}		
+       ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

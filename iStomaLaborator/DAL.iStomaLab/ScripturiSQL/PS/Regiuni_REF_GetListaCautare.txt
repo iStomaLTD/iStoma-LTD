@@ -1,0 +1,11 @@
+﻿CREATE PROCEDURE [dbo].[Regiuni_REF_GetListaCautare] 
+    @xnIdTara int,
+	@tDenumire nVarChar(100)
+AS
+BEGIN
+
+    SELECT nId, tNume FROM Regiuni_REF
+	WHERE xnIdTara = @xnIdTara AND tNume LIKE @tDenumire collate Latin1_General_BIN2 AND dDataInchidere IS NULL 
+	ORDER BY nPreferinta DESC
+
+END
